@@ -31,17 +31,8 @@
 			}
 		}
 
-		function insertWorldRecord( $rekordholder, $rekordtid ) {
-			$person = $this->db->quote( $rekordholder );
-			$tid = $this->db->quote( $rekordtid );
-			try {
-				$this->db->query( "INSERT INTO `ovelse` (rekordholder, verdensrekord) VALUES ($person, $tid)" );
-			} catch (mysqli_sql_exception $error) {
-				echo $error;
-			}
-		}
 
-		function updateValues( $id, $navn, $rekordholder, $rekordtid ) {
+		function updateEvent( $id, $navn, $rekordholder, $rekordtid ) {
 			$_id = $this->db->quote( $id );
 			$name = $this->db->quote( $navn );
 			$holder = $this->db->quote( $rekordholder );
@@ -53,5 +44,28 @@
 			$_id = $id;
 			$this->db->query( "DELETE FROM `ovelse` WHERE `id` = $_id" );
 		}
+
+
+		function insertWorldRecord( $rekordholder, $rekordtid ) {
+			$person = $this->db->quote( $rekordholder );
+			$tid = $this->db->quote( $rekordtid );
+			try {
+				$this->db->query( "INSERT INTO `ovelse` (rekordholder, verdensrekord) VALUES ($person, $tid)" );
+			} catch (mysqli_sql_exception $error) {
+				echo $error;
+			}
+		}
+
+		function setWorldRecord( $id, $rekordholder, $rekordtid ) {
+			$_id = $this->db->quote( $id );
+			$person = $this->db->quote( $rekordholder );
+			$tid = $this->db->quote( $rekordtid );
+			try {
+				$this->db->query( "UPDATE `ovelse` SET rekordholder = $person, verdensrekord = $tid WHERE `id` = $_id" );
+			} catch (mysqli_sql_exception $error) {
+				echo $error;
+			}
+		}
+
 
 	}
