@@ -1,3 +1,7 @@
+<?php
+	require_once 'vendor\autoload.php';
+	require_once 'config\config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto mr-5 text-white">
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="#"> Øvelser <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="app/resources/user-resources/userservice.php"> Øvelser <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="#"> Deltagere </a>
@@ -42,8 +46,4 @@
 </body>
 </html>
 
-<?php
-	require_once 'vendor\autoload.php';
-	require_once 'config\config.php';
-?>
 

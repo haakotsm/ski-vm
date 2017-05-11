@@ -1,11 +1,6 @@
 <?php
 
-	namespace Database;
-
-	use Config\AppConfig;
-	use Interfaces;
-	use mysqli;
-	use mysqli_sql_exception;
+	require_once __DIR__.'\..\interfaces\IDatabase.php';
 
 	class Database implements Interfaces\IDatabase {
 
@@ -14,7 +9,7 @@
 
 		function __construct() {
 			if ( !isset( $this->config ) ) {
-				$config = new AppConfig;
+				$config = require_once __DIR__.'\..\..\..\config\config.php';
 				$this->config = $config->getConfig();
 			}
 			if ( !isset( $this->conn ) ) {
