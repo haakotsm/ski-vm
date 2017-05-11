@@ -1,0 +1,17 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Database\\": "app/shared/database/",
+      "Interfaces\\": "app/shared/interfaces/",
+      "Config\\": "config/",
+      "Resources\\": "app/resources/",
+      "Resources\\UserResources\\": "app/resources/user-resources/"
+    }
+  },
+  "require": {
+    "components/jquery": "3.2.*",
+    "monolog/monolog": "1.0.*",
+    "leafo/scssphp": "0.0.12",
+    "twbs/bootstrap": "4.0.0-alpha.6"
+  }
+}
