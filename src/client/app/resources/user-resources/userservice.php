@@ -1,22 +1,16 @@
 <?php
 
-	namespace Resources\UserResources;
+	require_once __DIR__.'\..\..\shared\database\database.php';
 
-	use Database;
-	use mysqli_sql_exception;
-	use Resources\Service;
-
-	class UserService extends Service {
+	class UserService {
 		private $db;
 
 		function __construct() {
-			parent::__construct();
 
 			try {
-				$this->db = new Database\Database();
+				$this->db = new Database();
 			} catch (mysqli_sql_exception $error) {
-				self::$logger->err( $this->db->error() );
-
+				echo $error;
 			}
 
 		}
