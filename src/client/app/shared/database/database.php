@@ -1,6 +1,6 @@
 <?php
 
-	require_once __DIR__.'\..\interfaces\IDatabase.php';
+	require_once __DIR__ . '\..\interfaces\IDatabase.php';
 
 	class Database implements Interfaces\IDatabase {
 
@@ -9,15 +9,14 @@
 
 		function __construct() {
 			if ( !isset( $this->config ) ) {
-				$config = require_once __DIR__.'\..\..\..\config\config.php';
-				$this->config = $config->getConfig();
+				$config = require_once __DIR__ . '\..\..\..\config\config.php';
+				$this->config = $config;
 			}
 			if ( !isset( $this->conn ) ) {
 				$this->conn = new mysqli( $this->config->host, $this->config->username, $this->config->password );
 				if ( $this->conn->connect_error ) die( "Connection failed: " . $this->conn->connect_error );
 				else $this->create();
 			}
-
 		}
 
 		private function create() {

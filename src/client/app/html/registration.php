@@ -1,3 +1,33 @@
+<script>
+    $('#SubmitBtn').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'app/resources/event-resources/methods/addEvent.php?name=' + $('#fornavn').val(),
+            type: "POST",
+            data: 'json',
+            success: function (data) {
+                alert(JSON.stringify(data))
+            },
+            error: function (error) {
+                alert(error);
+            }
+        })
+    })
+    $('#HentKunde').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: 'app/resources/event-resources/methods/getEvents.php',
+            type: "GET",
+            data: 'json',
+            success: function (data) {
+                alert(JSON.stringify(data))
+            },
+            error: function (error) {
+                alert(error);
+            }
+        })
+    })
+</script>
 <div id="registration">
     <h2 class="col-8 ml-auto mr-auto px-0">Registrer til øvelse</h2>
     <div class="card col-8 ml-auto mr-auto px-0 pb-2">
@@ -5,7 +35,7 @@
             <div class="form-group row">
                 <label for="fornavn" class="col-2 col-form-label">Fornavn</label>
                 <div class="col-10">
-                    <input class="form-control" type="text" value="Ola Nordmann" id="fornavn">
+                    <input class="form-control" name="fornavn" type="text" value="Ola Nordmann" id="fornavn">
                 </div>
             </div>
             <div class="form-group row">
@@ -33,7 +63,10 @@
                     <input class="form-control" value="0188" id="postnr">
                 </div>
             </div>
-            <button class="btn btn-outline-primary mt-5"> Send Inn <i class="fa-pencil"></i></button>
+            <button type="submit" id="SubmitBtn" class="btn btn-outline-primary mt-5"> Send Inn <i
+                        class="fa-pencil"></i></button>
+            <button id="HentKunde" class="btn btn-outline-info mt-5">Hent shit</button>
         </div>
     </div>
 </div>
+
