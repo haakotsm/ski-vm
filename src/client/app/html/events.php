@@ -1,6 +1,27 @@
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: 'app/resources/event-resources/methods/getEvents.php',
+            type: "GET",
+            data: 'json',
+            success: function (data) {
+                var array = JSON.parse(data);
+                console.log(array[0]);
+                var table = document.querySelector('#myTable');
+                array.forEach(function (event, index) {
+                    var row = table.insertRow(index);
+                    row.insertCell(0).innerHTML = event['navn'];
+                })
+            },
+            error: function (error) {
+                alert(error);
+            }
+        })
+    })
+</script>
+<table id="myTable"></table>
 <div id="events">
     <h2> Øvelser</h2>
-
     <div id="carouselExampleIndicators" class="ml-auto mr-auto col-8 carousel slide align-items-center"
          data-ride="carousel">
         <ol class="carousel-indicators align-content-center ">
@@ -28,9 +49,5 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
-
 </div>
 
-
-</div>

@@ -6,21 +6,7 @@
             type: "POST",
             data: 'json',
             success: function (data) {
-                alert(JSON.stringify(data))
-            },
-            error: function (error) {
-                alert(error);
-            }
-        })
-    })
-    $('#HentKunde').click(function (e) {
-        e.preventDefault();
-        $.ajax({
-            url: 'app/resources/event-resources/methods/getEvents.php',
-            type: "GET",
-            data: 'json',
-            success: function (data) {
-                alert(JSON.stringify(data))
+                alert(JSON.stringify(data));
             },
             error: function (error) {
                 alert(error);

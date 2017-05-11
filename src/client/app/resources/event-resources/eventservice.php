@@ -1,6 +1,7 @@
 <?php
 
 	require_once __DIR__ . '\..\..\shared\database\database.php';
+	require_once __DIR__ . '\..\..\shared\models\Ovelse.php';
 
 	class EventService {
 		private $db;
@@ -24,11 +25,21 @@
 			}
 		}
 
+
 		function getEvents() {
-			return $this->db->select( "SELECT * FROM `ovelse`" );
+			try {
+				$eventModels = array();
+				$events = $this->db->select( "SELECT * FROM `ovelse`" );
+				while ( $rad = mysqli_fetch_array( $events ) ) {
+					$readEvent = new Ovelse( $rad[ "id" ], $rad[ "navn" ], $rad[ "verdensrekord" ], $rad[ "rekordholder" ] );
+					array_push( $eventModels, $readEvent );
+				}
 
+				return $eventModels;
+			} catch (mysqli_sql_exception $error) {
+				echo $error;
+			}
 		}
-
 
 		function updateEvent( $id, $navn, $rekordholder, $rekordtid ) {
 			$_id = $this->db->quote( $id );
@@ -60,6 +71,7 @@
 				echo $error;
 			}
 		}
+
 
 		function setWorldRecord( $id, $rekordholder, $rekordtid ) {
 			$_id = $this->db->quote( $id );

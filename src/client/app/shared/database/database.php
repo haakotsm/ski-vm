@@ -76,11 +76,16 @@
 		public function select( $query ) {
 			try {
 				$result = $this->query( $query );
-				return !$result ? $result->fetch_array() : false;
+				if ( !$result ) {
+					throw new mysqli_sql_exception( "Tomt resultat" );
+				} else {
+					return $result;
+				}
 			} catch (mysqli_sql_exception $error) {
 				throw $error;
 			}
 		}
+
 
 		public function query( $query ) {
 			try {

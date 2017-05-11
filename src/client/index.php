@@ -2,6 +2,7 @@
 	require_once 'vendor\autoload.php';
 	require_once 'config\config.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,11 @@
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <script src="app/scripts/spa-script.js"></script>
-
+    <script>
+        $(document).ready(function () {
+            callPage('app/html/events.php');
+        })
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-toggleable-md navbar-light p-0 flex-column mb-5">
@@ -30,7 +35,8 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto mr-5 text-white">
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/events.php"> Øvelsers <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" id="events" href="app/html/events.php"> Øvelsers <span
+                                class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="#"> Deltagere </a>
@@ -43,5 +49,6 @@
     </div>
 </nav>
 <div id="main-view">
+</div>
 </body>
 </html>
