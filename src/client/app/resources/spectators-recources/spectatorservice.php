@@ -16,14 +16,32 @@ class SpectatorService
 
     function getSpectator() {
 
+        $spectators = array();
+
         try {
-            return $this ->db->select("SELECT 'person.id', 'person.fornavn', 'tilskuere.tilskuer_id' FROM 'person' 
+            $sql = $this ->db->select("SELECT 'person.id', 'person.fornavn', 'person.etternavn', 'person.telefonnummer',
+        'person.adresse', 'person.poststed', 'person.postnummer', 'tilskuere.tilskuer_id' FROM 'person' 
               INNER JOIN 'tilskuere' ON 'person.id' = 'tilskuere.tilskuer_id' ");
+
+
+            
+            foreach ($sql as $spectator){
+
+                $person = new Person($spectator->id, $spectator->fornavn, $spectator->telefonnummer, $spectator->adresse, $spectator->poststed,
+                    $spectator->postnummer);
+
+                array_push($spectators, $spectator);
+
+            }
+
 
         } catch (mysqli_sql_exception $error) {
             echo $error;
         }
     }
+
+
+
 
 
 }
