@@ -17,7 +17,7 @@
 		function addEvent( $navn ) {
 			$param = $this->db->quote( $navn );
 			try {
-				$this->db->query( "INSERT INTO `ovelse` (navn) VALUE $param" );
+				$this->db->query( "INSERT INTO `ovelse` (navn) VALUES $param" );
 			} catch (mysqli_sql_exception $error) {
 				echo $error;
 			}
@@ -35,7 +35,7 @@
 			$person = $this->db->quote( $rekordholder );
 			$tid = $this->db->quote( $rekordtid );
 			try {
-				$this->db->query( "INSERT INTO `ovelse` (rekordholder, verdensrekord) VALUE ($person, $tid)" );
+				$this->db->query( "INSERT INTO `ovelse` (rekordholder, verdensrekord) VALUES ($person, $tid)" );
 			} catch (mysqli_sql_exception $error) {
 				echo $error;
 			}
@@ -49,6 +49,9 @@
 			$this->db->query( "UPDATE `ovelse` SET `navn` = $name, `rekordholder` = $holder, `verdensrekord` = $tid WHERE `id` = $_id" );
 		}
 
+		function deleteEvent( $id ) {
+			$_id = $id;
+			$this->db->query( "DELETE FROM `ovelse` WHERE `id` = $_id" );
+		}
+
 	}
-
-
