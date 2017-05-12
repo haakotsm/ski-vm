@@ -6,19 +6,23 @@
             data: 'json',
             success: function (data) {
                 var array = JSON.parse(data);
-                console.log(array[0]);
                 var table = document.querySelector('#myTable');
-                table.children.forEach(function (p1, p2, p3) {
-                    table.removedNodes)
-                })
+                for(var i = 0; i < table.rows.length; i++) {
+                    table.deleteRow(i);
+                }
+                var row = table.insertRow(0);
+                row.insertCell(0).outerHTML = "<th>#</th>";
+                row.insertCell(1).outerHTML = "<th>Navn</th>";
+                row.insertCell(2).outerHTML = "<th>Rekordtid</th>";
+                row.insertCell(3).outerHTML = "<th>Rekordholder</th>";
+
                 array.forEach(function (event, index) {
                     var row = table.insertRow(index + 1);
                     row.insertCell(0).innerHTML = event['id'];
                     row.insertCell(1).innerHTML = event['navn'] || 'Ingen Rekord';
                     row.insertCell(2).innerHTML = event['verdensrekord'] || 'Ingen rekord';
-                    row.insertCell(2).innerHTML = event['rekordtid'] || 'Ingen rekord';
-
-                })
+                    row.insertCell(3).innerHTML = event['rekordtid'] || 'Ingen rekord';
+                });
             },
             error: function (error) {
                 alert(error);
@@ -27,13 +31,6 @@
     })
 </script>
 <table id="myTable" class="table table-sm table-hover">
-    <thead>
-    <th>#</th>
-    <th>Navn</th>
-    <th> Rekordtid</th>
-    <th>Rekordholder</th>
-    </thead>
-    <tbody></tbody>
 </table>
 <div id="events">
     <h2> Øvelser</h2>

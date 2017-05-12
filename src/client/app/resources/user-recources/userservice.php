@@ -56,8 +56,8 @@
 						$usr = $rad[ 'brukernavn' ];
 						$pw = $rad[ 'passord' ];
 
-						echo "<br> Sammenligner| hasha brukernavn: " . $usr . "<br> unhasha brukernavn: $uname";
-						echo "<br> Sammenligner| hasha passord: " . $pw . "<br> unhasha passord: $uname<br>";
+						echo "<br> Sammenligner | hasha brukernavn: " . $usr . "<br> unhasha brukernavn: $uname";
+						echo "<br> Sammenligner | hasha passord: " . $pw . "<br> unhasha passord: $uname<br>";
 
 						$userOK = "yo";
 						$passOK = "yo";

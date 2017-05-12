@@ -27,7 +27,6 @@ function callPage(pageRefInput) {
         },
 
         complete: function (xhr, status) {
-            console.log(xhr, status);
             console.log("FÆRDI");
         }
     })

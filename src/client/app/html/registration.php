@@ -17,7 +17,7 @@
         })
     })
 </script>
-<script type="text/javascript" src="../scripts/RegExValidation.js"></script>
+<script type="text/javascript" src="./../scripts/RegExValidation.js"></script>
 <div id="registration">
     <h2 class="col-8 ml-auto mr-auto px-0">Registrer til øvelse</h2>
     <div class="card col-8 ml-auto mr-auto px-0 pb-2">

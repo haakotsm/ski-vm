@@ -39,7 +39,7 @@
                                 class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="#"> Deltagere </a>
+                    <a class="nav-link" href="app/html/athletes.html"> Deltagere </a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="app/html/registration.php"> Registerer bruker</a>
