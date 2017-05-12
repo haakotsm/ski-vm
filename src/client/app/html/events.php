@@ -14,7 +14,6 @@
                     row.insertCell(1).innerHTML = event['navn'] || 'Ingen Rekord';
                     row.insertCell(2).innerHTML = event['verdensrekord'] || 'Ingen rekord';
                     row.insertCell(2).innerHTML = event['rekordtid'] || 'Ingen rekord';
-
                 })
             },
             error: function (error) {

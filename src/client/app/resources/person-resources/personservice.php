@@ -6,13 +6,11 @@
 		private $db;
 
 		function __construct() {
-
 			try {
 				$this->db = new Database();
 			} catch (mysqli_sql_exception $error) {
 				echo $error;
 			}
-
 		}
 
 		function addPerson( $fornavn, $etternavn, $telefonnummer, $adresse, $poststed, $postnummer ) {
@@ -28,6 +26,20 @@
 				echo $error;
 			}
 		}
+
+		function registerAsSpectator($personId, $eventIdArr){
+            try{
+                for($i = 0; $i < count($eventIdArr); $i++){
+                    $sql = "INSERT INTO tilskuere 
+                            VALUES($eventIdArr[$i],$personId)";
+                    $this->db->query( $sql );
+                }
+            } catch (mysqli_sql_exception $err){
+                return $err;
+            }
+
+            return true;
+        }
 
 		function getPersoner() {
 			$result = $this->db->select( "SELECT * FROM `person`" );
@@ -46,7 +58,6 @@
 				return $result;
 			}
 		}
-
 
 		function updatePerson( $_id, $fornavn, $etternavn, $telefonnummer, $adresse, $poststed, $postnummer ) {
 			$fnavn = $this->db->quote( $fornavn );

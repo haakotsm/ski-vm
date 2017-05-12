@@ -11,7 +11,6 @@ class SpectatorService
         } catch (mysqli_sql_exception $error) {
             echo $error;
         }
-
     }
 
     function getSpectator() {
