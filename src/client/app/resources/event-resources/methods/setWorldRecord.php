@@ -6,11 +6,15 @@
 	 * Time: 20.45
 	 */
 	require_once __DIR__ . '/../eventservice.php';
+	$id = $_REQUEST[ 'id' ];
 	$eventService = new EventService();
-	$name = $_REQUEST[ 'name' ];
+	$rekordholder = $_REQUEST[ 'rekordholder' ];
+	$rekordtid = $_REQUEST[ 'verdensrekord' ];
 
-	if ( $name != '' && $name != 'undefined' ) {
-		$result = $eventService->addEvent( $name );
+	if ( $rekordholder != '' && $rekordholder != 'undefined' && !empty( $rekordholder ) &&
+		$rekordtid != '' && $rekordtid != 'undefined' && !empty( $rekordholder )
+	) {
+		$result = $eventService->setWorldRecord( $id,$rekordholder, $rekordtid );
 		echo $result;
 	} else {
 		echo 'gikk bæsj';

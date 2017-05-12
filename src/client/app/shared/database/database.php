@@ -9,7 +9,7 @@
 
 		function __construct() {
 			if ( !isset( $this->config ) ) {
-				$config = require_once __DIR__ . '\..\..\..\config\config.php';
+				$config = require __DIR__ . '\..\..\..\config\config.php';
 				$this->config = $config;
 			}
 			if ( !isset( $this->conn ) ) {

@@ -7,10 +7,10 @@
 	 */
 	require_once __DIR__ . '/../eventservice.php';
 	$eventService = new EventService();
-	$id = $_REQUEST[ 'name' ];
+	$id = $_REQUEST[ 'id' ];
 
-	if ( $name != '' && $name != 'undefined' ) {
-		$result = $eventService->deleteEvent( $name );
+	if ( $id != '' && $id != 'undefined' && !empty( $id ) ) {
+		$result = $eventService->deleteEvent( $id );
 		echo $result;
 	} else {
 		echo '';

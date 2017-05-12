@@ -1,93 +1,91 @@
 <?php
+	require_once __DIR__ . '\..\..\shared\database\database.php';
+	require_once __DIR__ . '\..\..\shared\models\Bruker.php';
 
-require_once __DIR__ . '\..\..\shared\database\database.php';
-require_once __DIR__ . '\..\..\shared\models\Bruker.php';
+	class UserService {
+		private $db;
 
-class UserService
-{
-    private $db;
+		function __construct() {
 
-    function __construct()
-    {
+			try {
+				$this->db = new Database();
+			} catch (mysqli_sql_exception $error) {
+				echo $error;
+			}
 
-        try {
-            $this->db = new Database();
-        } catch (mysqli_sql_exception $error) {
-            echo $error;
-        }
+		}
 
-    }
+		function addUser( $username, $password ) {
+			$options = [
+				'cost' => 11
+			];
+			$hashedUser = password_hash( $username, PASSWORD_BCRYPT, $options );
+			$hashedPass = password_hash( $password, PASSWORD_BCRYPT, $options );
 
-    function addUser($username, $password)
-    {
-        $options = [
-            'cost' => 11
-        ];
+			echo "<br> HASHING GIKK GREIT";
 
-        $hashedPass = password_hash($username, PASSWORD_BCRYPT, $options);
-        $hashedUser = password_hash($password, PASSWORD_BCRYPT, $options);
+			if ( $hashedPass && $hashedUser ) {
+				$uname = $this->db->quote( $hashedUser );
+				$pass = $this->db->quote( $hashedPass );
 
-        echo "<br> HASHING GIKK GREIT";
+				try {
+					$sql = "INSERT INTO `brukere` (id, brukernavn, passord) VALUES (0, $uname, $pass)";
+					$result = $this->db->query( $sql );
 
-        if ($hashedPass && $hashedUser) {
-            try {
-                echo "<br> Sammenligner| hasha brukernavn: ".$hashedUser;
-                echo "<br> Sammenligner| hasha passord: ".$hashedPass."<br>";
+					if ( !$result ) throw new mysqli_sql_exception( $this->db->error() );
+					else return $result;
 
-                $sql = "INSERT INTO brukere (id, brukernavn, passord) VALUES(0,$hashedUser,$hashedPass)";
-                $result = $this->db->query($sql);
+				} catch (mysqli_sql_exception $error) {
+					echo $error;
+				}
+			} else throw new mysqli_sql_exception( "Passord eller brukernavn kunne ikke registreres" );
+		}
 
-                if (!$result) throw new mysqli_sql_exception("Feil ved innsetting av bruker ");
-                else return $result;
+		function verifyUser( $username, $password ) {
+			$uname = $username;
+			$pass = $password;
 
-            } catch (mysqli_sql_exception $error) {
-                echo $error;
-            }
-        } else throw new mysqli_sql_exception("Passord eller brukernavn kunne ikke registreres");
-    }
+			try {
+				$sql = "SELECT * FROM brukere";
+				$result = $this->db->query( $sql );
 
-    function verifyUser($username, $password)
-    {
-        try{
-            $sql = "SELECT * FROM brukere";
-            $result = $this->db->query($sql);
+				if ( !$result ) throw new mysqli_sql_exception( "Feil i bekreftelse av bruker" );
+				else {
 
-            if (!$result) throw new mysqli_sql_exception("Feil i bekreftelse av bruker");
-            else {
+					while ( $rad = mysqli_fetch_array( $result ) ) {
+						$usr = $rad[ 'brukernavn' ];
+						$pw = $rad[ 'passord' ];
 
-                while ($rad = mysqli_fetch_array($result)){
+						echo "<br> Sammenligner| hasha brukernavn: " . $usr . "<br> unhasha brukernavn: $uname";
+						echo "<br> Sammenligner| hasha passord: " . $pw . "<br> unhasha passord: $uname<br>";
 
-                    echo "<br> Sammenligner| hasha brukernavn: ".$rad["brukernavn"]."<br> unhasha brukernavn: $uname";
-                    echo "<br> Sammenligner| hasha passord: ".$rad["passord"]."<br> unhasha passord: $uname<br>";
+						$userOK = "yo";
+						$passOK = "yo";
+						echo "!!!! " . $passOK . " WHY WONT YOU PRINT OUT " . $userOK . " !!!!";
 
-                    $userOK = password_verify($uname, $rad["brukernavn"]);
-                    $passOK = password_verify($pass, $rad["passord"]);
-                    echo $passOK ."WHY WONT YOU PRINT OUT<". $userOK;
+						if ( password_verify( $uname, $usr ) && password_verify( $pass, $pw ) ) {
+							echo "<br> verified yo <br>";
+							return true;
+						}
+					}
+					echo "<br> not verified no<br>";
+					return false;
+				}
+			} catch (mysqli_sql_exception $error) {
+				echo $error;
+			}
+		}
 
-                    if ($userOK && $passOK) {
-                        echo "<br> verified yo <br>";
-                        return true;
-                    }
-                }
-                echo "<br> not verified no<br>";
-                return false;
-            }
-        } catch (mysqli_sql_exception $error) {
-            echo $error;
-        }
-    }
+		function deleteUser( $_id ) {
+			$id = $this->db->quote( $_id );
+			try {
+				$sql = "DELETE FROM brukere WHERE id = $id";
+				$result = $this->db->query( $sql );
 
-    function deleteUser($_id)
-    {
-        $id = $this->db->quote($_id);
-        try {
-            $sql = "DELETE FROM brukere WHERE id = $id";
-            $result = $this->db->query($sql);
-
-            if (!$result) throw new mysqli_sql_exception("Feil ved sletting av person");
-            else return $result;
-        } catch (mysqli_sql_exception $error) {
-            echo $error;
-        }
-    }
-}
+				if ( !$result ) throw new mysqli_sql_exception( "Feil ved sletting av person" );
+				else return $result;
+			} catch (mysqli_sql_exception $error) {
+				echo $error;
+			}
+		}
+	}

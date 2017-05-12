@@ -9,7 +9,7 @@
 	$eventService = new EventService();
 	$name = $_REQUEST[ 'name' ];
 	try {
-		if ( $name != '' && $name != 'undefined' ) {
+		if ( $name != '' && $name != 'undefined' && !empty( $name ) ) {
 			$result = $eventService->addEvent( $name );
 			echo $result;
 		}
