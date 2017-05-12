@@ -1,11 +1,9 @@
 <?php
 
 	require_once __DIR__ . '\..\..\shared\database\database.php';
-	require_once __DIR__ . '\..\..\shared\models\Person.php';
+	require_once __DIR__ . '\..\..\shared\models\Spectator.php';
 
 	class SpectatorService {
-		private $db;
-
 		function __construct() {
 
 			try {
@@ -16,6 +14,15 @@
 
 		}
 
+		function getSpectatorsForEvent( $eventId ) {
+			$spectators = $this->getSpectator();
+			$eventSpecs = array();
+			for ( $i = 0; $i < count( $spectators ); $i++ ) {
+				if ( $spectators[ $i ]->event == $eventId ) array_push( $eventSpecs, $spectators[ $i ] );
+			}
+			return $eventSpecs;
+		}
+
 		function getSpectator() {
 			try {
 				$spectatorModels = array();
@@ -24,11 +31,10 @@
 				$result = $this->db->select( $sql );
 
 				if ( !$result ) throw new mysqli_sql_exception( "Feil i bekreftelse av bruker" );
-				echo "eg hater dette: " . count( $result );
 				while ( $rad = mysqli_fetch_array( $result ) ) {
-					$readPerson = new Person( $rad[ "id" ], $rad[ "fornavn" ], $rad[ "etternavn" ], $rad[ "telefonnummer" ], $rad[ "adresse" ], $rad[ "postnummer" ], $rad[ "poststed" ] );
-					echo "<br>$readPerson->fornavn<br>";
-					array_push( $spectatorModels, $readPerson );
+					$readSpectator = new Spectator( $rad[ "id" ], $rad[ "fornavn" ], $rad[ "etternavn" ], $rad[ "telefonnummer" ], $rad[ "adresse" ], $rad[ "postnummer" ], $rad[ "poststed" ], $rad[ "ovelse_id" ] );
+					echo "<br>DETTE ER EN EVENT ID: $readSpectator->event<br>";
+					array_push( $spectatorModels, $readSpectator );
 				}
 
 				return $spectatorModels;

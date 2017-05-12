@@ -1,5 +1,12 @@
 <?php
-class Person
+
+/**
+ * Created by PhpStorm.
+ * User: Duy
+ * Date: 12/05/2017
+ * Time: 16:30
+ */
+class Athlete
 {
     public $id;
     public $fornavn;
@@ -8,6 +15,7 @@ class Person
     public $adresse;
     public $postnummer;
     public $poststed;
+    public $event;
 
     /**
      * Person constructor.
@@ -19,7 +27,7 @@ class Person
      * @param $postnummer
      * @param $poststed
      */
-    public function __construct($id, $fornavn, $etternavn, $telefon, $adresse, $postnummer, $poststed)
+    public function __construct($id, $fornavn, $etternavn, $telefon, $adresse, $postnummer, $poststed, $event)
     {
         $this->id = $id;
         $this->fornavn = $fornavn;
@@ -28,6 +36,6 @@ class Person
         $this->adresse = $adresse;
         $this->postnummer = $postnummer;
         $this->poststed = $poststed;
+        $this->event = $event;
     }
 }
-

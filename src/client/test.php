@@ -7,21 +7,8 @@
 	 */
 
 	include 'app/resources/user-recources/userservice.php';
-	include 'app/resources/spectators-recources/spectatorservice.php';
-	$options = [
-		'cost' => 11
-	];
+	include 'app/resources/athlete-resource/athleteservice.php';
 
-	$us = new UserService();
-	echo "<br> NÅ TESTER VI <br>";
-	echo var_dump( $us );
-
-	echo $us->verifyUser( "morten", "morten" );
-	echo $us->verifyUser( "admin", "admin" );
-
-
-	$ss = new SpectatorService();
-	echo var_dump( $ss );
-
-	echo $ss->getSpectator();
-
+$AS = new AthleteService();
+echo $AS->getAthletes()[0]->fornavn;
+echo $AS->getAthleteForEvent(2)[0]->fornavn;
