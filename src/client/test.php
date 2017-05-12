@@ -7,7 +7,7 @@
 	 */
 
 	include 'app/resources/user-recources/userservice.php';
-
+	include 'app/resources/spectators-recources/spectatorservice.php';
 	$options = [
 		'cost' => 11
 	];
@@ -20,4 +20,10 @@
 
 	echo $us->verifyUser( "morten", "morten" );
 	echo $us->verifyUser( "admin", "admin" );
+
+
+	$ss = new SpectatorService();
+	echo var_dump($ss);
+
+	echo $ss->getSpectator();
 
