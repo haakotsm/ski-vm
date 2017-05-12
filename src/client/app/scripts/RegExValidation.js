@@ -115,3 +115,17 @@ function passwordValidation(){
     }
     melding+="Feil format tastet på passord, bare tall og bokstaver tillatt /n";
 }
+
+function validateUser() {
+   var username = usernameValidation();
+   var password = passwordValidation();
+
+   if(username && password){
+       return true;
+   }
+
+   alert(melding);
+   return false;
+
+
+}
