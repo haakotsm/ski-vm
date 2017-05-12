@@ -10,7 +10,7 @@
 	$name = $_REQUEST[ 'name' ];
 	try {
 		if ( $name != '' && $name != 'undefined' && !empty( $name ) ) {
-			$result = $eventService->addEvent( $id );
+			$result = $eventService->addEvent( $name );
 			echo $result;
 		}
 	} catch (mysqli_sql_exception $error) {
