@@ -1,79 +1,106 @@
-
 var melding = "";
 
-function nameValidation(){
+function nameValidation() {
+    var form = $("#fornavnForm");
+    var input = $("#fornavn");
+    var value = input.val();
 
-    var value = document.querySelector("#fornavn").value;
-    var regEx = /^([a-zA-Z]{3,25}[\ ][a-zA-Z]{3,25})|[a-zA-Z]{3,25}$/;
+    var regEx = /^([a-zA-zæøåÆØÅ\- ]+)$/;
     var ok = regEx.test(value);
     if (ok) {
-
+        form.removeClass('has-danger');
+        form.addClass('has-success');
         return true;
-
     }
-    melding+="Feil format gitt på fornavn./n";
+    form.removeClass('has-success');
+    form.addClass('has-danger');
+    melding += "Feil format gitt på fornavn./n";
     return false;
 }
 function lastnameValidation() {
+    var form = $("#etternavnForm");
 
-    var value =  document.querySelector("#etternavn").value;
-    var regEx = /^([a-zA-Z]{3,25}[\ ][a-zA-Z]{3,25})|[a-zA-Z]{3,25}$/;
+    var value = $("#etternavn").val();
+    var regEx = /^([a-zA-zæøåÆØÅ\- ]+)$/;
     var ok = regEx.test(value);
     if (ok) {
+        form.removeClass('has-danger');
+        form.addClass('has-success');
         return true;
     }
-    melding+="Feil format gitt på etternavn./n";
+    form.removeClass('has-success');
+    form.addClass('has-danger');
+    melding += "Feil format gitt på etternavn./n";
     return false;
 
 }
 
 function phoneValidation() {
+    var form = $("#tlfForm");
 
-    var value =  document.querySelector("#telefon").value;
-    var regEx = /$[0-9]{8}^/;
+    var value = $("#telefon").val();
+    var regEx = /^((0047)?|(\+47)?|(47)?)\d{8}$/;
     var ok = regEx.test(value);
     if (ok) {
+        form.removeClass('has-danger');
+        form.addClass('has-success');
         return true;
     }
-    melding+="Feil format gitt på telefonnummer./n";
+    form.removeClass('has-success');
+    form.addClass('has-danger');
+    melding += "Feil format gitt på telefonnummer./n";
     return false;
 
 }
 
 function adresseValidation() {
+    var form = $("#adrForm");
 
-    var value =  document.querySelector("#adresse").value;
-    var regEx = /^([a-zA-Z0-9]{3,25}[\ ][a-zA-Z0-9]{2,25})|[a-zA-Z0-9]{2,25}$/;
+    var value = $("#adresse").val();
+    var regEx = /^([a-zA-zæøåÆØÅ\- ]+)((,? ?)\d+([a-zA-z])?){1}$/;
     var ok = regEx.test(value);
     if (ok) {
+        form.removeClass('has-danger');
+        form.addClass('has-success');
         return true;
     }
-    melding+="Feil format gitt på adresse./n";
+    form.removeClass('has-success');
+    form.addClass('has-danger');
+    melding += "Feil format gitt på adresse./n";
     return false;
 
 }
 
 function postValidation() {
-
-    var value =  document.querySelector("#post").value;
-    var regEx = /^[a-zA-Z]{3,25}$/;
+    var form = $("#postForm");
+    var value = $("#poststed").val();
+    var regEx = /^([a-zA-zæøåÆØÅ\- ]+)$/;
     var ok = regEx.test(value);
     if (ok) {
+        form.removeClass('has-danger');
+        form.addClass('has-success');
         return true;
     }
-    melding+="Feil format gitt på poststed./n";
+    form.removeClass('has-success');
+    form.addClass('has-danger');
+    melding += "Feil format gitt på poststed./n";
     return false;
 
 }
 function postnrValidation() {
+    var form = $("#postForm");
 
-    var value =  document.querySelector("#post").value;
-    var regEx = /^[0-9]{4}$/;
+    var value = $("#postnr").val();
+    var regEx = /^(\d{4})$/;
     var ok = regEx.test(value);
     if (ok) {
+        form.removeClass('has-danger');
+        form.addClass('has-success');
         return true;
     }
-    melding+="Feil format gitt på postnummer./n";
+    form.removeClass('has-success');
+    form.addClass('has-danger');
+    melding += "Feil format gitt på postnummer./n";
     return false;
 
 }
@@ -86,46 +113,49 @@ function valAll() {
     var post = postValidation();
     var postnr = postnrValidation();
 
-    if(name && lname && phone && adresse && post && postnr)
-    {
+    if (name && lname && phone && adresse && post && postnr) {
+        melding = "";
         return true;
     }
     alert(melding);
+    melding = "";
     return false;
 }
 
-function usernameValidation(){
+function usernameValidation() {
     var value = document.querySelector("#brukernavn").value;
     var regEx = /^([a-zA-Z]{3,25}[\ ][a-zA-Z]{3,25})|[a-zA-Z]{3,25}$/;
     var ok = regEx.test(value);
 
-    if(ok){
+    if (ok) {
         return true
     }
-    melding+="Feil format tastet på brukernavn, bare tall og bokstaver tillatt /n";
+    melding += "Feil format tastet på brukernavn, bare tall og bokstaver tillatt /n";
 }
 
-function passwordValidation(){
+function passwordValidation() {
     var value = document.querySelector("#passord").value;
     var regEx = /^([a-zA-Z]{3,25}[\ ][a-zA-Z]{3,25})|[a-zA-Z]{3,25}$/;
     var ok = regEx.test(value);
 
-    if(ok){
+    if (ok) {
         return true
     }
-    melding+="Feil format tastet på passord, bare tall og bokstaver tillatt /n";
+    melding += "Feil format tastet på passord, bare tall og bokstaver tillatt /n";
 }
 
 function validateUser() {
-   var username = usernameValidation();
-   var password = passwordValidation();
+    var username = usernameValidation();
+    var password = passwordValidation();
 
-   if(username && password){
-       return true;
-   }
+    if (username && password) {
+        melding = "";
+        return true;
+    }
 
-   alert(melding);
-   return false;
+    alert(melding);
+    melding = "";
+    return false;
 
 
 }

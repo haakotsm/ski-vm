@@ -11,8 +11,10 @@
     <title>VM i ski</title>
     <script src="vendor/components/jquery/jquery.min.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
     <script src="app/scripts/spa-script.js"></script>
+    <script type="text/javascript" src="app/scripts/RegExValidation.js"></script>
     <script>
         $(document).ready(function () {
             callPage('app/html/events.php');
@@ -39,7 +41,7 @@
                                 class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/athletes.html"> Deltagere </a>
+                    <a class="nav-link" href="app/html/athletes.html    "> Deltagere </a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="app/html/registration.php"> Registerer bruker</a>
