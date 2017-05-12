@@ -14,4 +14,6 @@ $options = [
 
 $us = new UserService();
 echo "NÅ TESTER VI <br>";
-echo $us->addUser(1, "admin", "admin");
+
+echo $us->verifyUser("morten","morten");
+
