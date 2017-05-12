@@ -24,20 +24,20 @@ class UserService
             'cost' => 11
         ];
 
-        $hashedPass = password_hash($password, PASSWORD_BCRYPT, $options);
-        $hashedUser = password_hash($username, PASSWORD_BCRYPT, $options);
+        $hashedPass = password_hash($username, PASSWORD_BCRYPT, $options);
+        $hashedUser = password_hash($password, PASSWORD_BCRYPT, $options);
 
         echo "<br> HASHING GIKK GREIT";
 
         if ($hashedPass && $hashedUser) {
-            $uname = $this->db->quote($hashedUser);
-            $pass = $this->db->quote($hashedPass);
-
             try {
-                $sql = "INSERT INTO brukere (id, brukernavn, passord) VALUES(0,$uname,$pass)";
+                echo "<br> Sammenligner| hasha brukernavn: ".$hashedUser;
+                echo "<br> Sammenligner| hasha passord: ".$hashedPass."<br>";
+
+                $sql = "INSERT INTO brukere (id, brukernavn, passord) VALUES(0,$hashedUser,$hashedPass)";
                 $result = $this->db->query($sql);
 
-                if (!$result) throw new mysqli_sql_exception("Feil ved innsetting av person");
+                if (!$result) throw new mysqli_sql_exception("Feil ved innsetting av bruker ");
                 else return $result;
 
             } catch (mysqli_sql_exception $error) {
@@ -48,9 +48,6 @@ class UserService
 
     function verifyUser($username, $password)
     {
-        $uname = $this->db->quote($username);
-        $pass = $this->db->quote($password);
-
         try{
             $sql = "SELECT * FROM brukere";
             $result = $this->db->query($sql);

@@ -9,7 +9,8 @@
 include 'app/resources/user-recources/userservice.php';
 include 'app/resources/spectators-recources/spectatorservice.php';
 
-$ss = new SpectatorService();
+$us = new UserService();
+$us->addUser("accenture","pass");
+$us->verifyUser("accenture","pass");
 
-echo $ss->getSpectator();
 
