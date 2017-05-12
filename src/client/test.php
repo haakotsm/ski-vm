@@ -7,13 +7,9 @@
  */
 
 include 'app/resources/user-recources/userservice.php';
+include 'app/resources/spectators-recources/spectatorservice.php';
 
-$options = [
-    'cost' => 11
-];
+$ss = new SpectatorService();
 
-$us = new UserService();
-echo "NÅ TESTER VI <br>";
-
-echo $us->verifyUser("morten","morten");
+echo $ss->getSpectator();
 
