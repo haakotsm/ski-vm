@@ -3,9 +3,9 @@
         e.preventDefault();
         $.ajax({
             url: 'app/resources/person-resources/methods/addPerson.php' +
-            '?fornavn=' + $('#fornavn').val(), '?etternavn=' +$('#etternavn').val(),
-            '?telefon=' +$('#telefon').val(), '?adresse=' +$('#adresse').val(),
-            '?poststed=' +$('#poststed').val(), '?postnr=' +$('#postnr').val(),
+            '?fornavn=' + $('#fornavn').val() + '&etternavn=' + $('#etternavn').val() +
+            '&telefon=' + $('#telefon').val() + '&adresse=' + $('#adresse').val() +
+            '&poststed=' + $('#poststed').val() + '&postnr=' + $('#postnr').val(),
             type: "POST",
             data: 'json',
             success: function (data) {

@@ -8,6 +8,9 @@
                 var array = JSON.parse(data);
                 console.log(array[0]);
                 var table = document.querySelector('#myTable');
+                table.children.forEach(function (p1, p2, p3) {
+                    table.removedNodes)
+                })
                 array.forEach(function (event, index) {
                     var row = table.insertRow(index + 1);
                     row.insertCell(0).innerHTML = event['id'];

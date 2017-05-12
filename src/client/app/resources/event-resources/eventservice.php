@@ -42,7 +42,11 @@
 			$name = $this->db->quote( $navn );
 			$holder = $this->db->quote( $rekordholder );
 			$tid = $this->db->quote( $rekordtid );
-			$result = $this->db->query( "UPDATE `ovelse` SET `navn` = $name, `rekordholder` = $holder, `verdensrekord` = $tid WHERE `id` = $_id" );
+
+			$sql = "UPDATE ovelse 
+                    SET navn = $name, rekordholder = $holder, verdensrekord = $tid 
+                    WHERE id = $_id";
+			$result = $this->db->query( $sql );
 			if ( !$result ) {
 				throw new mysqli_sql_exception( 'Feil ved oppdatering av ' . $name );
 			} else {
