@@ -14,16 +14,18 @@
 		}
 
 		function addPerson( $fornavn, $etternavn, $telefonnummer, $adresse, $poststed, $postnummer ) {
+			$_id = $this->db->quote(0);
 			$fnavn = $this->db->quote( $fornavn );
 			$enavn = $this->db->quote( $etternavn );
 			$tlf = $this->db->quote( $telefonnummer );
 			$adr = $this->db->quote( $adresse );
 			$psted = $this->db->quote( $poststed );
 			$pnr = $this->db->quote( $postnummer );
-			try {
-				$this->db->query( "INSERT INTO `person` VALUES $fnavn, $enavn, $tlf, $adr, $psted, $pnr" );
-			} catch (mysqli_sql_exception $error) {
-				echo $error;
+			$result = $this->db->query( "INSERT INTO `person` VALUES ($_id, $fnavn, $enavn, $tlf, $adr, $psted, $pnr )" );
+			if ( !$result ) {
+				throw new mysqli_sql_exception( $this->db->error() );
+			} else {
+				return $result;
 			}
 		}
 

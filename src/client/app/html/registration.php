@@ -17,6 +17,7 @@
             '&telefon=' +$('#telefon').val() + '&adresse=' +$('#adresse').val() +
             '&poststed=' +$('#poststed').val() +  '&postnr=' +$('#postnr').val() +
             '&ovelseid=' + $('#eventSelect').val(),
+
             type: "POST",
             data: 'json',
             success: function (data) {
