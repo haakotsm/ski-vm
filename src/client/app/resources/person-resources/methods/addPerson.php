@@ -16,13 +16,10 @@
 	$adresse = $_REQUEST[ 'adresse' ];
 	$poststed = $_REQUEST[ 'poststed' ];
 	$postnummer = $_REQUEST[ 'postnr' ];
-	$ovelseid =  $_REQUEST['ovelseid'];
+	$ovelseid = $_REQUEST[ 'ovelseid' ];
+
+
 	try {
-		if ( $name != '' && $name != 'undefined' && !empty( $name ) ) {
-            $result = $personService->addPerson($id);
-            $personService->registerAsSpectator($id, $ovelseid);
-        }
-	/*try {
 		$regError = false;
 		if ( !preg_match( '/^([a-zA-zæøåÆØÅ\- ]+)$/', $fornavn ) ) {
 			$regError .= "Feil i fornavn <br>";
@@ -51,14 +48,16 @@
 			$telefonnummer != '' && $telefonnummer != 'undefined' && !empty( $telefonnummer ) &&
 			$adresse != '' && $adresse != 'undefined' && !empty( $adresse ) &&
 			$poststed != '' && $poststed != 'undefined' && !empty( $poststed ) &&
-			$postnummer != '' && $postnummer != 'undefined' && !empty( $postnummer )
+			$postnummer != '' && $postnummer != 'undefined' && !empty( $postnummer ) &&
+			$ovelseid != '' && $ovelseid != 'undefined' && !empty( $ovelseid )
 		) {
 			$result = $personService->addPerson( $fornavn, $etternavn, $telefonnummer, $adresse, $poststed, $postnummer );
-
+			$id = $result[ 'id' ];
+			$personService->registerAsSpectator( $id, $ovelseid );
 			echo $result;
 		} else {
 			throw new mysqli_sql_exception( "Feil ved innlegging av person" );
-		}*/
-	}catch (mysqli_sql_exception $error) {
+		}
+	} catch (mysqli_sql_exception $error) {
 		echo $error;
 	}

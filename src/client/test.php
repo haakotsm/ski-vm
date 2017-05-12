@@ -8,7 +8,7 @@
 
 	include 'app/resources/user-recources/userservice.php';
 	include 'app/resources/athlete-resource/athleteservice.php';
+	include 'app/resources/person-resources/personservice.php';
 
-$AS = new AthleteService();
-echo $AS->getAthletes()[0]->fornavn;
-echo $AS->getAthleteForEvent(2)[0]->fornavn;
+	$US = new PersonService();
+	echo $US->addPerson( "David", "Silva", "nummer", "adresse", "opost", "nummer" );
