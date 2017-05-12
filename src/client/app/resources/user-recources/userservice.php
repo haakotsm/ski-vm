@@ -42,10 +42,8 @@
 		}
 
 		function verifyUser( $username, $password ) {
-			$uname = /*$this->db->quote( */
-				$username;
-			$pass = /*$this->db->quote( */
-				$password;
+			$uname = $username;
+			$pass = $password;
 
 			try {
 				$sql = "SELECT * FROM brukere";
