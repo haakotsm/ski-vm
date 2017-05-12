@@ -63,22 +63,25 @@
                            oninput="adresseValidation()">
                 </div>
             </div>
-            <div class="form-inline row" id="postForm">
-                <label class="col-2 justify-content-start">Post</label>
-                <div class="col-10">
-                    <input class="form-control" name="poststed" type="text" placeholder="OSLO" id="poststed"
+            <div class="form-inline form-group row">
+                <label class="col-2 col-form-label">Post</label>
+                <div class="form-group col-5" id="pstedForm">
+                    <input class="form-control col-12" name="poststed" type="text" placeholder="OSLO" id="poststed"
                            oninput="postValidation()">
-                    <input class="form-control" name="postnr" placeholder="0188" id="postnr"
+                </div>
+                <div class="form-group col-5" id="pnrForm">
+                    <input class="form-control col-12" name="postnr" placeholder="0188" id="postnr"
                            oninput="postnrValidation()">
                 </div>
             </div>
-            <div class="form-inline row mt-5">
-                <label class="col-2 justify-content-start" for="eventSelect">Velg Øvelse(r)</label>
-                <select multiple class="form-control col-10" id="eventSelect"></select>
+            <div class="form-inline row">
+                <label class="col-2 col-form-label" for="eventSelect">Velg Øvelse(r)</label>
+                <div class="form-group col-10">
+                    <select multiple class="form-control col-12" id="eventSelect"></select>
+                </div>
             </div>
-            <button type="submit" id="SubmitBtn" class="btn btn-outline-primary mt-5"> Send Inn <i
-                        class="fa-pencil"></i></button>
-            <button id="HentKunde" class="btn btn-outline-info mt-5">Hent shit</button>
+            <button type="submit" id="SubmitBtn" class="btn btn-outline-primary mt-5">
+                Send Inn <i class="fa fa-pencil"></i></button>
         </div>
     </div>
 </div>

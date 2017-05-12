@@ -1,5 +1,4 @@
 var melding = "";
-
 function nameValidation() {
     var form = $("#fornavnForm");
     var input = $("#fornavn");
@@ -23,15 +22,19 @@ function nameValidation() {
 }
 function lastnameValidation() {
     var form = $("#etternavnForm");
-
-    var value = $("#etternavn").val();
+    var input = $("#etternavn");
+    var value = input.val();
     var regEx = /^([a-zA-zæøåÆØÅ\- ]+)$/;
     var ok = regEx.test(value);
     if (ok) {
+        input.addClass('form-control-success');
+        input.removeClass('form-control-danger');
         form.removeClass('has-danger');
         form.addClass('has-success');
         return true;
     }
+    input.removeClass('form-control-success');
+    input.addClass('form-control-danger');
     form.removeClass('has-success');
     form.addClass('has-danger');
     melding += "Feil format gitt på etternavn./n";
@@ -41,15 +44,19 @@ function lastnameValidation() {
 
 function phoneValidation() {
     var form = $("#tlfForm");
-
-    var value = $("#telefon").val();
+    var input = $("#telefon");
+    var value = input.val();
     var regEx = /^((0047)?|(\+47)?|(47)?)\d{8}$/;
     var ok = regEx.test(value);
     if (ok) {
+        input.addClass('form-control-success');
+        input.removeClass('form-control-danger');
         form.removeClass('has-danger');
         form.addClass('has-success');
         return true;
     }
+    input.removeClass('form-control-success');
+    input.addClass('form-control-danger');
     form.removeClass('has-success');
     form.addClass('has-danger');
     melding += "Feil format gitt på telefonnummer./n";
@@ -59,15 +66,19 @@ function phoneValidation() {
 
 function adresseValidation() {
     var form = $("#adrForm");
-
-    var value = $("#adresse").val();
+    var input = $("#adresse");
+    var value = input.val();
     var regEx = /^([a-zA-zæøåÆØÅ\- ]+)((,? ?)\d+([a-zA-z])?){1}$/;
     var ok = regEx.test(value);
     if (ok) {
+        input.addClass('form-control-success');
+        input.removeClass('form-control-danger');
         form.removeClass('has-danger');
         form.addClass('has-success');
         return true;
     }
+    input.removeClass('form-control-success');
+    input.addClass('form-control-danger');
     form.removeClass('has-success');
     form.addClass('has-danger');
     melding += "Feil format gitt på adresse./n";
@@ -76,15 +87,20 @@ function adresseValidation() {
 }
 
 function postValidation() {
-    var form = $("#postForm");
-    var value = $("#poststed").val();
+    var form = $("#pstedForm");
+    var input = $("#poststed");
+    var value = input.val();
     var regEx = /^([a-zA-zæøåÆØÅ\- ]+)$/;
     var ok = regEx.test(value);
     if (ok) {
+        input.addClass('form-control-success');
+        input.removeClass('form-control-danger');
         form.removeClass('has-danger');
         form.addClass('has-success');
         return true;
     }
+    input.removeClass('form-control-success');
+    input.addClass('form-control-danger');
     form.removeClass('has-success');
     form.addClass('has-danger');
     melding += "Feil format gitt på poststed./n";
@@ -92,16 +108,20 @@ function postValidation() {
 
 }
 function postnrValidation() {
-    var form = $("#postForm");
-
-    var value = $("#postnr").val();
+    var form = $("#pnrForm");
+    var input = $("#postnr");
+    var value = input.val();
     var regEx = /^(\d{4})$/;
     var ok = regEx.test(value);
     if (ok) {
+        input.addClass('form-control-success');
+        input.removeClass('form-control-danger');
         form.removeClass('has-danger');
         form.addClass('has-success');
         return true;
     }
+    input.removeClass('form-control-success');
+    input.addClass('form-control-danger');
     form.removeClass('has-success');
     form.addClass('has-danger');
     melding += "Feil format gitt på postnummer./n";
