@@ -93,3 +93,39 @@ function valAll() {
     alert(melding);
     return false;
 }
+
+function usernameValidation(){
+    var value = document.querySelector("#brukernavn").value;
+    var regEx = /^([a-zA-Z]{3,25}[\ ][a-zA-Z]{3,25})|[a-zA-Z]{3,25}$/;
+    var ok = regEx.test(value);
+
+    if(ok){
+        return true
+    }
+    melding+="Feil format tastet på brukernavn, bare tall og bokstaver tillatt /n";
+}
+
+function passwordValidation(){
+    var value = document.querySelector("#passord").value;
+    var regEx = /^([a-zA-Z]{3,25}[\ ][a-zA-Z]{3,25})|[a-zA-Z]{3,25}$/;
+    var ok = regEx.test(value);
+
+    if(ok){
+        return true
+    }
+    melding+="Feil format tastet på passord, bare tall og bokstaver tillatt /n";
+}
+
+function validateUser() {
+   var username = usernameValidation();
+   var password = passwordValidation();
+
+   if(username && password){
+       return true;
+   }
+
+   alert(melding);
+   return false;
+
+
+}

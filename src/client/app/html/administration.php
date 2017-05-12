@@ -6,17 +6,17 @@
     <form>
         <div class="form-group">
             <label for="email">Brukernavn:</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" id="brukernavn" onchange="usernameValidation()">
         </div>
         <div class="form-group">
             <label for="pwd">Passord:</label>
-            <input type="password" class="form-control" id="pwd">
+            <input type="password" class="form-control" id="passord" onchange="passwordValidation()">
         </div>
         <div class="checkbox">
             <label><input type="checkbox"> Remember me</label>
         </div>
-        <button type="submit" class="btn btn-default">Logg inn</button>
-        <button type="submit" class="btn btn-default">Registrer</button>
+        <button type="submit" class="btn btn-default" onchange="validateUser()">Logg inn</button>
+        <button type="submit" class="btn btn-default" onchange="validateUser()">Registrer</button>
     </form>
 
 
