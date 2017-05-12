@@ -13,17 +13,15 @@
 	];
 
 	$us = new UserService();
-	echo $us->addUser( 'admin', 'admin' );
-	echo $us->addUser( 'admins', 'admins' );
-	echo $us->addUser( 'admins1', 'admins1' );
-	echo "NÅ TESTER VI <br>";
+	echo "<br> NÅ TESTER VI <br>";
+	echo var_dump( $us );
 
 	echo $us->verifyUser( "morten", "morten" );
 	echo $us->verifyUser( "admin", "admin" );
 
 
 	$ss = new SpectatorService();
-	echo var_dump($ss);
+	echo var_dump( $ss );
 
 	echo $ss->getSpectator();
 

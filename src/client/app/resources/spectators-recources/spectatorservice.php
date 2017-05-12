@@ -28,6 +28,7 @@
 				while ( $rad = mysqli_fetch_array( $result ) ) {
 					$readPerson = new Person( $rad[ "id" ], $rad[ "fornavn" ], $rad[ "etternavn" ], $rad[ "telefonnummer" ], $rad[ "adresse" ], $rad[ "postnummer" ], $rad[ "poststed" ] );
 					echo "<br>$readPerson->fornavn<br>";
+					echo "<br>$readPerson->fornavn<br>";
 					array_push( $spectatorModels, $readPerson );
 				}
 
