@@ -44,6 +44,9 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="app/html/registration.php"> Registerer bruker</a>
                 </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="app/html/administration.php">Administrering</a>
+                </li>
             </ul>
         </div>
     </div>
