@@ -9,8 +9,8 @@
 	$eventService = new EventService();
 	$name = $_REQUEST[ 'name' ];
 	try {
-		if ( $name != '' && $name != 'undefined' ) {
-			$result = $eventService->addEvent( $name );
+		if ( $name != '' && $name != 'undefined' && !empty( $name ) ) {
+			$result = $eventService->addEvent( $id );
 			echo $result;
 		}
 	} catch (mysqli_sql_exception $error) {
