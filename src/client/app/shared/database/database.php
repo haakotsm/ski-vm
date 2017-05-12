@@ -26,8 +26,8 @@
 
 				$sql = "CREATE TABLE IF NOT EXISTS `" . $this->config->dbname . "`.`brukere`(
 `id` INT AUTO_INCREMENT PRIMARY KEY,
-`brukernavn` VARCHAR(30) NOT NULL,
-`passord` VARCHAR(50) NOT NULL);";
+`brukernavn` VARCHAR(256) NOT NULL,
+`passord` VARCHAR(256) NOT NULL);";
 				$this->conn->query( $sql );
 
 				$sql = "CREATE TABLE IF NOT EXISTS `" . $this->config->dbname . "`.`ovelse`(

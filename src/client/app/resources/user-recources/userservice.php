@@ -14,23 +14,44 @@ class UserService {
         }
 
     }
-    function addUser( $brukernavn, $passord, $_id) {
-        $bnavn = $this->db->quote( $brukernavn );
-        $pass = $this->db->quote( $passord );
-        $id = $this->db->quote( $_id );
-        try {
-            $this->db->query( "INSERT INTO `brukere` VALUES $bnavn, $pass, $id" );
-        } catch (mysqli_sql_exception $error) {
-            echo $error;
+
+    function addUser($_id, $username, $password) {
+        $options = [
+            'cost' => 11
+        ];
+
+        $hashedPass = password_hash($password, PASSWORD_BCRYPT, $options);
+        $hashedUser = password_hash($username, PASSWORD_BCRYPT, $options);
+        echo "NÅ KJØRER KODEN <br>";
+        if($hashedPass && $hashedUser ){
+            $uname = $this->db->quote( $username );
+            $pass = $this->db->quote( $password );
+            $id = $this->db->quote( $_id );
+
+            try {
+                $sql = "INSERT INTO 'brukere'(id, brukernavn, passord) VALUES($id,$uname,$pass)";
+                $this->db->query($sql);
+            } catch (mysqli_sql_exception $error) {
+                echo $error;
+            }
+
+            return true;
         }
+
+        else throw new mysqli_sql_exception("Passord eller brukernavn kunne ikke registreres");
     }
 
+    function verifyUser($username, $password, $_id){
+        $uname = $this->db->quote( $username );
+        $pass = $this->db->quote( $password );
+        $id = $this->db->quote( $_id );
 
-    function deleteUser( $id ) {
-        $_id = $this->db->quote($id);
-        $this->db->query( "DELETE FROM `brukere` WHERE `id` = $_id" );
+
     }
 
-
-
+    function deleteUser( $_id ) {
+        $id = $this->db->quote($_id);
+        $sql = "DELETE FROM `brukere` WHERE `id` = $id";
+        $this->db->query( $sql );
+    }
 }

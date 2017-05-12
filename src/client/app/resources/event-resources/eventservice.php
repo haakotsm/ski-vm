@@ -1,5 +1,4 @@
 <?php
-
 	require_once __DIR__ . '\..\..\shared\database\database.php';
 	require_once __DIR__ . '\..\..\shared\models\Ovelse.php';
 
@@ -12,7 +11,6 @@
 			} catch (mysqli_sql_exception $error) {
 				echo $error;
 			}
-
 		}
 
 		function addEvent( $navn ) {
@@ -24,7 +22,6 @@
 				return $result;
 			}
 		}
-
 
 		function getEvents() {
 			try {
