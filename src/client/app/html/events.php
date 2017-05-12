@@ -7,7 +7,7 @@
             success: function (data) {
                 var array = JSON.parse(data);
                 var table = document.querySelector('#myTable');
-                for(var i = 0; i < table.rows.length; i++) {
+                for (var i = 0; i < table.rows.length; i++) {
                     table.deleteRow(i);
                 }
                 var row = table.insertRow(0);

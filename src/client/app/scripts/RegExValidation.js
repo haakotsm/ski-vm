@@ -8,10 +8,14 @@ function nameValidation() {
     var regEx = /^([a-zA-zæøåÆØÅ\- ]+)$/;
     var ok = regEx.test(value);
     if (ok) {
+        input.addClass('form-control-success');
+        input.removeClass('form-control-danger');
         form.removeClass('has-danger');
         form.addClass('has-success');
         return true;
     }
+    input.removeClass('form-control-success');
+    input.addClass('form-control-danger');
     form.removeClass('has-success');
     form.addClass('has-danger');
     melding += "Feil format gitt på fornavn./n";

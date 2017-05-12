@@ -44,10 +44,10 @@
                     <a class="nav-link" href="app/html/athletes.html    "> Deltagere </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/registration.php"> Registerer bruker</a>
+                    <a class="nav-link" href="app/html/registration.php"> Meld på øvelse </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/administration.php">Administrering</a>
+                    <a class="nav-link" href="app/html/administration.php"> Logg Inn (Admin) </a>
                 </li>
             </ul>
         </div>

@@ -5,6 +5,7 @@
 	 * Date: 12.05.2017
 	 * Time: 14.36
 	 */
+
 	require_once __DIR__ . '/../personservice.php';
 
 	$personService = new PersonService();
@@ -15,7 +16,13 @@
 	$adresse = $_REQUEST[ 'adresse' ];
 	$poststed = $_REQUEST[ 'poststed' ];
 	$postnummer = $_REQUEST[ 'postnr' ];
+	$ovelseid =  $_REQUEST['ovelseid'];
 	try {
+		if ( $name != '' && $name != 'undefined' && !empty( $name ) ) {
+            $result = $personService->addPerson($id);
+            $personService->registerAsSpectator($id, $ovelseid);
+        }
+	/*try {
 		$regError = false;
 		if ( !preg_match( '/^([a-zA-zæøåÆØÅ\- ]+)$/', $fornavn ) ) {
 			$regError .= "Feil i fornavn <br>";
@@ -47,10 +54,11 @@
 			$postnummer != '' && $postnummer != 'undefined' && !empty( $postnummer )
 		) {
 			$result = $personService->addPerson( $fornavn, $etternavn, $telefonnummer, $adresse, $poststed, $postnummer );
+
 			echo $result;
 		} else {
 			throw new mysqli_sql_exception( "Feil ved innlegging av person" );
-		}
-	} catch (mysqli_sql_exception $error) {
+		}*/
+	}catch (mysqli_sql_exception $error) {
 		echo $error;
 	}
