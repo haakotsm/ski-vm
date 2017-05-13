@@ -13,6 +13,7 @@
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/src/client/app/css/main.scss">
     <script src="app/scripts/spa-script.js"></script>
     <script type="text/javascript" src="app/scripts/RegExValidation.js"></script>
     <script>
@@ -37,20 +38,23 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto mr-5 text-white">
                 <li class="nav-item mx-2">
-                    <a class="nav-link" id="events" href="app/html/events.php"> Øvelsers <span
+                    <a class="nav-link" id="events" href="app/html/events.php"><i class="fa fa-trophy"></i>Se øvelser <span
                                 class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/athletes.html"> Deltagere </a>
+                    <a class="nav-link btn-draw" href="app/html/athletes.php"> <i class="fa fa-id-card-o"></i> Se utøvere </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/registration.php"> Meld på øvelse </a>
+                    <a class="nav-link" href="app/html/registration.php"> <i class="fa fa-ticket"></i> Meld på øvelse </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/spectators.php?event=2"> En øvelse </a>
+                    <a class="nav-link" href="app/html/registrationEvent.php"><i class="fa fa-plus"></i> Øvelse </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/registrationAthlete.php"> Logg Inn (Admin) </a>
+                    <a class="nav-link" href="app/html/registrationAthlete.php"><i class="fa fa-plus"></i> Utøver </a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="app/html/administration.php"><i class="fa fa-sign-in"></i> Logg Inn (Admin) </a>
                 </li>
             </ul>
         </div>

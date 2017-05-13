@@ -35,13 +35,11 @@
         });
     })
 </script>
-<table id="myTable" class="table table-sm table-hover">
-</table>
 <div id="events">
     <section class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Øvelser</h1>
+                <h1> Øvelser </h1>
             </div>
         </div>
     </section>

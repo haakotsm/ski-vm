@@ -13,7 +13,30 @@
 			}
 		}
 
-		function registerAsSpectator( $fornavn, $etternavn, $telefonnummer, $adresse, $poststed, $postnummer, $eventIdArr ) {
+        function registerAsAthlete( $fornavn, $etternavn, $eventIdArr ) {
+            $result = "";
+            try {
+                //No need for full personalia of athletes
+                $this->addPerson( $fornavn, $etternavn, "tlf", "adr", "poststed", "postnr");
+                $eventIdArr = explode( ',', $eventIdArr );
+                $id = $this->db->insertId();
+                for ( $i = 0; $i < count( $eventIdArr ); $i++ ) {
+
+                    $sql = "INSERT INTO `utovere` 
+                            VALUES ( $eventIdArr[$i], $id )";
+                    echo $sql;
+                    $result .= $this->db->query( $sql );
+                }
+            } catch (mysqli_sql_exception $err) {
+                return $err;
+            }
+            if ( !$result ) {
+                return $this->db->error();
+            }
+            return $result;
+        }
+
+        function registerAsSpectator( $fornavn, $etternavn, $telefonnummer, $adresse, $poststed, $postnummer, $eventIdArr ) {
 			$result = "";
 			try {
 				$this->addPerson( $fornavn, $etternavn, $telefonnummer, $adresse, $poststed, $postnummer );

@@ -13,9 +13,10 @@
 			}
 		}
 
-		function addEvent( $navn ) {
-			$param = $this->db->quote( $navn );
-			$result = $this->db->query( "INSERT INTO `ovelse` (navn) VALUES (" . $param . ")" );
+		function addEvent( $navn, $verdensrekord, $rekordholder ) {
+			$_navn = $this->db->quote( $navn );
+			$sql = "INSERT INTO `ovelse` VALUES ($_navn, $verdensrekord, $rekordholder);";
+			$result = $this->db->query( $sql );
 			if ( !$result ) {
 				throw new mysqli_sql_exception( "Feil ved innsetting av person" );
 			} else {
