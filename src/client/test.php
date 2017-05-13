@@ -10,4 +10,4 @@
 	include 'app/resources/person-resources/personservice.php';
 
 	$US = new PersonService();
-	echo $US->addPerson( "Raheem", "Sterling", "nummer", "adresse", "opost", "nummer" );
+	echo $US->registerAsSpectator( "Raheem", "Sterling", "98844823", "Niels JUels Gate 37A", "Oslo", "0257", "2,5,4" );

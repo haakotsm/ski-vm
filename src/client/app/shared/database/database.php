@@ -52,8 +52,8 @@
                 `tilskuer_id` INT(10) NOT NULL,
                 KEY `ovelse` (`ovelse_id`),
                 KEY `tilskuer` (`tilskuer_id`),
-                CONSTRAINT `ovelse` FOREIGN KEY (`ovelse_id`) REFERENCES `ovelse` (`id`),
-                CONSTRAINT `tilskuer` FOREIGN KEY (`tilskuer_id`) REFERENCES `person` (`id`));";
+                CONSTRAINT `ovelse` FOREIGN KEY (`ovelse_id`) REFERENCES `ovelse` (`id`) ON DELETE CASCADE,
+                CONSTRAINT `tilskuer` FOREIGN KEY (`tilskuer_id`) REFERENCES `person` (`id`) ON DELETE CASCADE);";
 				$this->conn->query( $sql );
 
 				$sql = "CREATE TABLE IF NOT EXISTS `" . $this->config->dbname . "`.`utovere` (
@@ -61,8 +61,8 @@
                 `utover_id` INT(10) NOT NULL,
                 KEY `utover` (`utover_id`),
                 KEY `utover_ovelse` (`ovelse_id`),
-                CONSTRAINT `utover` FOREIGN KEY (`utover_id`) REFERENCES `person` (`id`),
-                CONSTRAINT `utover_ovelse` FOREIGN KEY (`ovelse_id`) REFERENCES `ovelse` (`id`));";
+                CONSTRAINT `utover` FOREIGN KEY (`utover_id`) REFERENCES `person` (`id`) ON DELETE CASCADE,
+                CONSTRAINT `utover_ovelse` FOREIGN KEY (`ovelse_id`) REFERENCES `ovelse` (`id`) ON DELETE CASCADE);";
 				$this->conn->query( $sql );
 			} catch (mysqli_sql_exception $error) {
 				throw $error;
@@ -93,6 +93,10 @@
 			} catch (mysqli_sql_exception $error) {
 				throw $error;
 			}
+		}
+
+		public function insertId() {
+			return $this->conn->insert_id;
 		}
 
 		public function quote( $value ) {
