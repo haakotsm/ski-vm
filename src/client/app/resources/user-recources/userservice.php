@@ -22,8 +22,6 @@
 			$hashedUser = password_hash( $username, PASSWORD_BCRYPT, $options );
 			$hashedPass = password_hash( $password, PASSWORD_BCRYPT, $options );
 
-			echo "<br> HASHING GIKK GREIT";
-
 			if ( $hashedPass && $hashedUser ) {
 				$uname = $this->db->quote( $hashedUser );
 				$pass = $this->db->quote( $hashedPass );
@@ -56,19 +54,14 @@
 						$usr = $rad[ 'brukernavn' ];
 						$pw = $rad[ 'passord' ];
 
-						echo "<br> Sammenligner | hasha brukernavn: " . $usr . "<br> unhasha brukernavn: $uname";
-						echo "<br> Sammenligner | hasha passord: " . $pw . "<br> unhasha passord: $uname<br>";
-
 						$userOK = "yo";
 						$passOK = "yo";
 						echo "!!!! " . $passOK . " WHY WONT YOU PRINT OUT " . $userOK . " !!!!";
 
 						if ( password_verify( $uname, $usr ) && password_verify( $pass, $pw ) ) {
-							echo "<br> verified yo <br>";
 							return true;
 						}
 					}
-					echo "<br> not verified no<br>";
 					return false;
 				}
 			} catch (mysqli_sql_exception $error) {
