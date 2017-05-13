@@ -12,7 +12,7 @@
         e.preventDefault();
         if (valAll()) {
             $.ajax({
-                url: 'app/resources/person-resources/methods/addPerson.php' +
+                url: 'app/resources/person-resources/methods/addPersonSpectator.php' +
                 '?fornavn=' + $('#fornavn').val() + '&etternavn=' + $('#etternavn').val() +
                 '&telefon=' + $('#telefon').val() + '&adresse=' + $('#adresse').val() +
                 '&poststed=' + $('#poststed').val() + '&postnr=' + $('#postnr').val() +
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="form-inline form-group row">
-                <label class="col-2 col-form-label">Post</label>
+                <label class="col-2 col-form-label justify-content-start">Post</label>
                 <div class="form-group col-5" id="pstedForm">
                     <input class="form-control col-12" name="poststed" type="text" placeholder="OSLO" id="poststed"
                            oninput="postValidation()">
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="form-inline row">
-                <label class="col-2 col-form-label" for="eventSelect">Velg Øvelse(r)</label>
+                <label class="col-2 col-form-label justify-content-start" for="eventSelect">Velg Øvelse(r)</label>
                 <div class="form-group col-10">
                     <select multiple class="form-control col-12" id="eventSelect"></select>
                 </div>

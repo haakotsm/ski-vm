@@ -7,8 +7,7 @@
 	 */
 
 	include 'app/resources/user-recources/userservice.php';
-	include 'app/resources/athlete-resource/athleteservice.php';
 	include 'app/resources/person-resources/personservice.php';
 
 	$US = new PersonService();
-	echo $US->addPerson( "David", "Silva", "nummer", "adresse", "opost", "nummer" );
+	echo $US->addPerson( "Raheem", "Sterling", "nummer", "adresse", "opost", "nummer" );
