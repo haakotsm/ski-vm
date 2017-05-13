@@ -25,7 +25,6 @@ class AthleteService
             if (!$result) throw new mysqli_sql_exception("Feil i henting av utøvere");
             while ( $rad = mysqli_fetch_array( $result ) ) {
                 $readAthlete = new Athlete($rad["id"],$rad["fornavn"],$rad["etternavn"],$rad["telefonnummer"],$rad["adresse"],$rad["postnummer"],$rad["poststed"],$rad["ovelse_id"]);
-                echo "<br>DETTE ER EN EVENT ID: $readAthlete->event<br>";
                 array_push( $athleteModels, $readAthlete);
             }
 

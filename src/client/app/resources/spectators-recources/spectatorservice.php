@@ -27,7 +27,6 @@ class SpectatorService
             if (!$result) throw new mysqli_sql_exception("Feil i bekreftelse av bruker");
             while ($rad = mysqli_fetch_array($result)) {
                 $readSpectator = new Spectator($rad["id"], $rad["fornavn"], $rad["etternavn"], $rad["telefonnummer"], $rad["adresse"], $rad["postnummer"], $rad["poststed"], $rad["ovelse_id"]);
-                echo "<br>DETTE ER EN EVENT ID: $readSpectator->event<br>";
                 array_push($spectatorModels, $readSpectator);
             }
 

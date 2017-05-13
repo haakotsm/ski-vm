@@ -14,6 +14,7 @@
 	$eventArray = $spectatorService->getSpectatorsForEvent( $event );
 ?>
 <div class="container-fluid">
+    <div class="p-3">
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -25,7 +26,6 @@
         <tbody>
 
 		<?php
-			var_dump( $eventArray );
 			for ( $i = 0; $i < count( $eventArray ); $i++ ) {
 				echo "<tr><td>" . $eventArray[ $i ]->fornavn . " " . $eventArray[ $i ]->etternavn . "</td>";
 				echo "<td>" . $eventArray[ $i ]->telefon . "</td>";
@@ -34,4 +34,5 @@
 		?>
         </tbody>
     </table>
+</div>
 </div>

@@ -1,5 +1,4 @@
 <?php
-	namespace Interfaces;
 	interface IDatabase {
 		function error();
 		function query($query);

@@ -128,4 +128,7 @@
 			}
 		}
 
+		function insertStdData() {
+			$this->db->insertStandardData();
+		}
 	}
