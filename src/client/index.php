@@ -45,6 +45,8 @@
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="app/html/registration.php"> Meld på øvelse </a>
+                </li><li class="nav-item mx-2">
+                    <a class="nav-link" href="app/html/spectators.php?event=2"> En øvelse </a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="app/html/registrationAthlete.php"> Logg Inn (Admin) </a>
