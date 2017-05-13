@@ -79,5 +79,8 @@
 			$this->db->query( "DELETE FROM `person` WHERE `id` = $_id" );
 		}
 
+		function insertStdData(){
+		    $this->db->insertStandardData();
+        }
 
 	}

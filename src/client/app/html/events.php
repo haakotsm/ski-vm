@@ -1,65 +1,54 @@
 <script>
     $(document).ready(function () {
-        $.ajax({
-            url: 'app/resources/event-resources/methods/getEvents.php',
-            type: "GET",
-            data: 'json',
-            success: function (data) {
-                var array = JSON.parse(data);
-                var table = document.querySelector('#myTable');
-                for (var i = 0; i < table.rows.length; i++) {
-                    table.deleteRow(i);
-                }
-                var row = table.insertRow(0);
-                row.insertCell(0).outerHTML = "<th>#</th>";
-                row.insertCell(1).outerHTML = "<th>Navn</th>";
-                row.insertCell(2).outerHTML = "<th>Rekordtid</th>";
-                row.insertCell(3).outerHTML = "<th>Rekordholder</th>";
+            $.get("app/resources/event-resources/methods/getEvents.php", function (resultat) {
+            $.each(JSON.parse(resultat), function (index, element) {
+                var athleteArray = [];
+                $.ajax({url: "app/resources/athlete-resource/methods/getAthleteForEvent.php?eventId=" + index,
+                    type: 'get',
+                    async: false,
+                    success: function (resultat) {
+                    $.each(JSON.parse(resultat), function (index, element) {
+                        athleteArray.push(element);
+                    });
+                }});
 
-                array.forEach(function (event, index) {
-                    var row = table.insertRow(index + 1);
-                    row.insertCell(0).innerHTML = event['id'];
-                    row.insertCell(1).innerHTML = event['navn'] || 'Ingen Rekord';
-                    row.insertCell(2).innerHTML = event['verdensrekord'] || 'Ingen rekord';
-                    row.insertCell(3).innerHTML = event['rekordtid'] || 'Ingen rekord';
-                });
-            },
-            error: function (error) {
-                alert(error);
-            }
-        })
+                $('#eventContainer').append('' +
+                    '<div class="card col-4 bg-info"> ' +
+                        '<div class="card-block p-t-2">' +
+                            '<h2 class="justify-content-start">'+ element.navn +'</h2>' +
+                            '<b">Verdensrekord: </b><br>' + element.rekordholder + ' | ' + element.verdensrekord +
+                        '</div>' +
+                        '<div class="card-block p-t-2 bg-faded">' +
+                            '<h3 class="justify-content-start"> Deltagere: </h3>' +
+                            '<div class="dropdown-divider"></div>' +
+                                "<div id='athletes" + (index) + "'>" +
+                                '</div>' +
+                            '</div>' +
+                        '</div>'
+                )
+
+                for (var i = 0; i < athleteArray.length; i++) {
+                    $('#athletes'+(index-1)).append(athleteArray[i].fornavn + ' ' + athleteArray[i].etternavn + '<br>');
+                }
+            });
+        });
     })
 </script>
 <table id="myTable" class="table table-sm table-hover">
 </table>
 <div id="events">
-    <h2> Øvelser</h2>
-    <div id="carouselExampleIndicators" class="ml-auto mr-auto col-8 carousel slide align-items-center"
-         data-ride="carousel">
-        <ol class="carousel-indicators align-content-center ">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <img class="d-block img-fluid mx-auto" src="assets/kvinner5km.jpg" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block img-fluid mx-auto" src="assets/kvinner5km.jpg" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block img-fluid mx-auto" src="assets/kvinner5km.jpg" alt="Third slide">
+    <section class="container p-t-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Øvelser</h1>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    </section>
+    <div class="container">
+        <div class="row row-equal carousel-item active mb-5" id="eventContainer">
+
+        </div>
     </div>
+</div>
 </div>
 

@@ -1,9 +1,6 @@
 /**
  * Created by nguyen.duy.j.khac on 11.05.2017.
  */
-
-
-console.log("script loaded");
 $(document).ready(function () {
     $('a').on('click', function (e) {
         e.preventDefault();
@@ -27,7 +24,6 @@ function callPage(pageRefInput) {
         },
 
         complete: function (xhr, status) {
-            console.log("FÆRDI");
         }
     })
 }

@@ -9,5 +9,6 @@
 	include 'app/resources/user-recources/userservice.php';
 	include 'app/resources/person-resources/personservice.php';
 
-	$US = new PersonService();
-	echo $US->addPerson( "Raheem", "Sterling", "nummer", "adresse", "opost", "nummer" );
+$US = new PersonService();
+$US->insertStdData();
+var_dump($US);
