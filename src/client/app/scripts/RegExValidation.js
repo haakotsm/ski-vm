@@ -1,4 +1,19 @@
 var melding = "";
+
+function success(input, form) {
+    input.addClass('form-control-success');
+    input.removeClass('form-control-danger');
+    form.removeClass('has-danger');
+    form.addClass('has-success');
+}
+
+function danger(input, form) {
+    input.removeClass('form-control-success');
+    input.addClass('form-control-danger');
+    form.removeClass('has-success');
+    form.addClass('has-danger');
+}
+
 function nameValidation() {
     var form = $("#fornavnForm");
     var input = $("#fornavn");
@@ -7,16 +22,10 @@ function nameValidation() {
     var regEx = /^([a-zA-zæøåÆØÅ\- ]+)$/;
     var ok = regEx.test(value);
     if (ok) {
-        input.addClass('form-control-success');
-        input.removeClass('form-control-danger');
-        form.removeClass('has-danger');
-        form.addClass('has-success');
+        success(input, form);
         return true;
     }
-    input.removeClass('form-control-success');
-    input.addClass('form-control-danger');
-    form.removeClass('has-success');
-    form.addClass('has-danger');
+    danger(input, form);
     melding += "Feil format gitt på fornavn./n";
     return false;
 }
@@ -27,16 +36,10 @@ function lastnameValidation() {
     var regEx = /^([a-zA-zæøåÆØÅ\- ]+)$/;
     var ok = regEx.test(value);
     if (ok) {
-        input.addClass('form-control-success');
-        input.removeClass('form-control-danger');
-        form.removeClass('has-danger');
-        form.addClass('has-success');
+        success(input, form);
         return true;
     }
-    input.removeClass('form-control-success');
-    input.addClass('form-control-danger');
-    form.removeClass('has-success');
-    form.addClass('has-danger');
+    danger(input, form);
     melding += "Feil format gitt på etternavn./n";
     return false;
 
@@ -49,16 +52,10 @@ function phoneValidation() {
     var regEx = /^((0047)?|(\+47)?|(47)?)\d{8}$/;
     var ok = regEx.test(value);
     if (ok) {
-        input.addClass('form-control-success');
-        input.removeClass('form-control-danger');
-        form.removeClass('has-danger');
-        form.addClass('has-success');
+        success(input, form);
         return true;
     }
-    input.removeClass('form-control-success');
-    input.addClass('form-control-danger');
-    form.removeClass('has-success');
-    form.addClass('has-danger');
+    danger(input, form);
     melding += "Feil format gitt på telefonnummer./n";
     return false;
 
@@ -71,16 +68,10 @@ function adresseValidation() {
     var regEx = /^([a-zA-zæøåÆØÅ\- ]+)((,? ?)\d+([a-zA-z])?){1}$/;
     var ok = regEx.test(value);
     if (ok) {
-        input.addClass('form-control-success');
-        input.removeClass('form-control-danger');
-        form.removeClass('has-danger');
-        form.addClass('has-success');
+        success(input, form);
         return true;
     }
-    input.removeClass('form-control-success');
-    input.addClass('form-control-danger');
-    form.removeClass('has-success');
-    form.addClass('has-danger');
+    danger(input, form);
     melding += "Feil format gitt på adresse./n";
     return false;
 
@@ -93,16 +84,10 @@ function postValidation() {
     var regEx = /^([a-zA-zæøåÆØÅ\- ]+)$/;
     var ok = regEx.test(value);
     if (ok) {
-        input.addClass('form-control-success');
-        input.removeClass('form-control-danger');
-        form.removeClass('has-danger');
-        form.addClass('has-success');
+        success(input, form);
         return true;
     }
-    input.removeClass('form-control-success');
-    input.addClass('form-control-danger');
-    form.removeClass('has-success');
-    form.addClass('has-danger');
+    danger(input, form);
     melding += "Feil format gitt på poststed./n";
     return false;
 
@@ -114,16 +99,10 @@ function postnrValidation() {
     var regEx = /^(\d{4})$/;
     var ok = regEx.test(value);
     if (ok) {
-        input.addClass('form-control-success');
-        input.removeClass('form-control-danger');
-        form.removeClass('has-danger');
-        form.addClass('has-success');
+        success(input, form);
         return true;
     }
-    input.removeClass('form-control-success');
-    input.addClass('form-control-danger');
-    form.removeClass('has-success');
-    form.addClass('has-danger');
+    danger(input, form);
     melding += "Feil format gitt på postnummer./n";
     return false;
 
