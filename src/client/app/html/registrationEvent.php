@@ -16,7 +16,6 @@
         }
     });
 </script>
-
 <div id="registrationEvent">
     <h2 class="col-8 ml-auto mr-auto px-0">Legg til øvelse</h2>
     <div class="card col-8 ml-auto mr-auto px-0 pb-2">
