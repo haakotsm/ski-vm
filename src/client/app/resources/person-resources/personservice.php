@@ -1,6 +1,6 @@
 <?php
 
-	require_once __DIR__ . '\..\..\shared\database\database.php';
+	require_once __DIR__ . '\\..\\..\\shared\\database\\database.php';
 
 	class PersonService {
 		private $db;

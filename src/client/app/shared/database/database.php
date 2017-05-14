@@ -1,5 +1,5 @@
 <?php
-	require __DIR__ . '\..\interfaces\IDatabase.php';
+	require __DIR__ . '\\..\\interfaces\\IDatabase.php';
 
 	class Database implements IDatabase {
 
@@ -8,7 +8,7 @@
 
 		function __construct() {
 			if ( !isset( $this->config ) ) {
-				$config = require __DIR__ . '\..\..\..\config\config.php';
+				$config = require __DIR__ . '\\..\\..\\..\\config\\config.php';
 				$this->config = $config;
 			}
 			if ( !isset( $this->conn ) ) {

@@ -5,7 +5,7 @@
 	 * Date: 13.05.2017
 	 * Time: 15.32
 	 */
-	include_once __DIR__ . '\..\spectatorservice.php';
+	include_once __DIR__ . '\\..\\spectatorservice.php';
 	$spectatorService = new SpectatorService();
 	try {
 		if ( isset( $_REQUEST[ 'event' ] ) ) {

@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__.'\..\..\shared\database\database.php';
-require_once __DIR__.'\..\..\shared\models\Athlete.php';
+require_once __DIR__.'\\..\\..\\shared\\database\\database.php';
+require_once __DIR__.'\\..\\..\\shared\\models\\Athlete.php';
 class AthleteService
 {
     function __construct() {

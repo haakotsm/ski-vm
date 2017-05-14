@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '\..\..\shared\database\database.php';
-require_once __DIR__ . '\..\..\shared\models\Spectator.php';
+require_once __DIR__ . '\\..\\..\\shared\\database\\database.php';
+require_once __DIR__ . '\\..\\..\\shared\\models\\Spectator.php';
 
 class SpectatorService
 {

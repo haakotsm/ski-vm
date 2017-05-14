@@ -7,7 +7,7 @@
 	 */
 	$id = $_REQUEST[ 'id' ];
 
-	require_once __DIR__ . '\..\personservice.php';
+	require_once __DIR__ . '\\..\\personservice.php';
 
 	$personService = new PersonService();
 	if($id != '' && $id = 'undefined' && !empty($id)) {

@@ -5,7 +5,7 @@
 	 * Date: 14.05.2017
 	 * Time: 23.04
 	 */
-	require __DIR__.'\..\userservice.php';
+	require __DIR__.'\\..\\userservice.php';
 	if ( isset( $_REQUEST[ 'username' ] ) && isset( $_REQUEST[ 'password' ] ) ) {
 		$username = $_REQUEST[ 'username' ];
 		$password = $_REQUEST[ 'password' ];

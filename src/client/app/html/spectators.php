@@ -11,7 +11,7 @@
 	 * Date: 13.05.2017
 	 * Time: 16.58
 	 */
-	require_once __DIR__ . '\..\resources\spectators-recources\spectatorservice.php';
+	require_once __DIR__ . '\\..\\resources\\spectators-recources\\spectatorservice.php';
 	$spectatorService = new SpectatorService();
 	if ( !isset( $_REQUEST[ 'event' ] ) ) {
 		return;
