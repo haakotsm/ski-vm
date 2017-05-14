@@ -15,10 +15,17 @@
         <div class="checkbox">
             <label><input type="checkbox"> Remember me</label>
         </div>
-        <button type="submit" class="btn btn-default" onchange="validateUser()">Logg inn</button>
+        <button id="loginnButton" type="submit" class="btn btn-default" onchange="validateUser()">Logg inn</button>
         <button type="submit" class="btn btn-default" onchange="validateUser()">Registrer</button>
     </form>
 
+<?php
 
+session_start();
+
+$_SESSION['brukernavn'] = 'brukernavn';
+$_SESSION['passord'] = 'passord';
+
+?>
 
 </div>

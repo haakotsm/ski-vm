@@ -47,19 +47,26 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="app/html/registration.php"> <i class="fa fa-ticket"></i> Meld på øvelse </a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/registrationEvent.php"><i class="fa fa-plus"></i> Øvelse </a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/registrationAthlete.php"><i class="fa fa-plus"></i> Utøver </a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/administration.php"><i class="fa fa-sign-in"></i> Logg Inn (Admin) </a>
-                </li>
+<?php
+session_start();
+
+if(isset($_GET['brukernavn'])){
+
+    echo '<li class="nav-item mx-2">';
+                    echo '<a id ="display" class="nav-link" href="app/html/registrationEvent.php"><i class="fa fa-plus"></i> Øvelse </a></li>';
+                echo '<li class="nav-item mx-2">';
+                    echo '<a id="display"  class="nav-link" href="app/html/registrationAthlete.php"><i class="fa fa-plus"></i> Utøver </a></li>';
+                echo '<li class="nav-item mx-2">';
+}
+
+?>
+               <li> <a class="nav-link" href="app/html/administration.php"><i class="fa fa-sign-in"></i> Logg Inn (Admin) </a></li>
+
             </ul>
         </div>
     </div>
 </nav>
+
 <div id="main-view">
 </div>
 </body>
