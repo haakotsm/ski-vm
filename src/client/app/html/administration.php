@@ -10,10 +10,10 @@
     <div class="ml-auto mr-auto col-3">
 
         <h2>Logg inn/Registrer bruker</h2>
-        <form>
+        <form method="get">
             <div class="form-group">
-                <label for="email">Brukernavn:</label>
-                <input type="email" class="form-control" id="brukernavn" onchange="usernameValidation()">
+                <label for="brukernavn">Brukernavn:</label>
+                <input class="form-control" id="brukernavn" onchange="usernameValidation()">
             </div>
             <div class="form-group">
                 <label for="pwd">Passord:</label>
@@ -23,7 +23,8 @@
                 <label><input type="checkbox"> Remember me</label>
             </div>
             <button id="loginnButton" type="submit" class="btn btn-default" onchange="validateUser()">Logg inn</button>
-            <button id =registerButton" type="submit" class="btn btn-default" onchange="validateUser()">Registrer</button>
+            <button id=registerButton" type="submit" class="btn btn-default" onchange="validateUser()">Registrer
+            </button>
         </form>
 
 		<?php
@@ -31,20 +32,15 @@
 
 			$userserivice = new userservice();
 
-			if(isset($_GET['loginnButton'])) {
-
-
-				if($userserivice->verifyUser( $_GET['brukernavn'],$_GET['passord'])){
-					$_SESSION['brukernavn'] = $_GET['brukernavn'];
+			if ( isset( $_GET[ 'loginnButton' ] ) ) {
+				if ( $userserivice->verifyUser( $_GET[ 'brukernavn' ], $_GET[ 'passord' ] ) ) {
+					$_SESSION[ 'brukernavn' ] = $_GET[ 'brukernavn' ];
 				}
-
-
 			}
 
-			if (isset($_GET['registerButton'])){
-
-				$userserivice->addUser($_GET['brukernavn'],$_GET['passord']);
-				$_SESSION['brukernavn'] = $_GET['brukernavn'];
+			if ( isset( $_GET[ 'registerButton' ] ) ) {
+				$userserivice->addUser( $_GET[ 'brukernavn' ], $_GET[ 'passord' ] );
+				$_SESSION[ 'brukernavn' ] = $_GET[ 'brukernavn' ];
 			}
 		?>
 
