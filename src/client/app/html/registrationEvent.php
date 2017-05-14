@@ -1,7 +1,7 @@
 <script>
     $('#SubmitBtn').click(function (e) {
         e.preventDefault();
-        if (valAll()) {
+        if (valAddOvelse()) {
             $.ajax({
                 url: 'app/resources/person-resources/methods/addPersonAthlete.php' +
                 '?name=' + $('#name').val() + '&record=' + $('#record').val() + '&recordHolder=' + $('#recordHolder'),
@@ -25,22 +25,23 @@
                 <label for="navn" class="col-2 col-form-label">Navn på øvelse</label>
                 <div class="col-10">
                     <input class="form-control" name="name" type="text"
-                           placeholder="eksempel: Langrenn" id="name" oninput="nameValidation()">
-                    <small class="form-text text-muted">Fyll inn navn</small>
+                           placeholder="Eksempel: Langrenn" id="name" oninput="valOvelse()">
+                    <small class="form-text text-muted">Fyll inn navn på øvelse</small>
                 </div>
             </div>
             <div class="form-group row" id="recordForm">
                 <label for="record" class="col-2 col-form-label">Rekord</label>
                 <div class="col-10">
-                    <input class="form-control" type="text" name="record" placeholder="35.5 min" id="record">
+                    <input class="form-control" type="text" name="record" placeholder="35:50" id="record" oninput="valRekord()">
+                    <small class="form-text text-muted">Fyll inn tiden for verdensrekord på følgende format ##:##</small>
                 </div>
             </div>
             <div class="form-group row" id="recordHolderForm">
                 <label for="recordHolder" class="col-2 col-form-label">Rekordholder</label>
                 <div class="col-10">
                     <input class="form-control" name="recordHolder" type="tel" placeholder="Tor Krattebøl"
-                           id="recordHolder"
-                           oninput="">
+                           id="recordHolder"oninput="valRekordHolder()">
+                    <small class="form-text text-muted">Fyll inn verdensrekordholder</small>
                 </div>
             </div>
             <button type="submit" id="SubmitBtn" class="btn btn-outline-primary mt-5">

@@ -1,13 +1,4 @@
 <script>
-    $(document).ready(function () {
-        console.log("TEST");
-        $.get("app/resources/event-resources/methods/getEvents.php", function (resultat) {
-            console.log(resultat);
-            $.each(JSON.parse(resultat), function (index, element) {
-                $('#eventSelect').append('<option value="' + element.id + '">' + element.navn + '</option>');
-            });
-        });
-    });
     $('#SubmitBtn').click(function (e) {
         e.preventDefault();
         if (valAll()) {
@@ -27,8 +18,8 @@
                 }
             })
         }
-    });
-</script>
+    });</script>
+<script type="text/javascript" src="app/scripts/fillSelect.js"></script>
 <div id="registration">
     <h2 class="col-8 ml-auto mr-auto px-0">Registrer til øvelse</h2>
     <div class="card col-8 ml-auto mr-auto px-0 pb-2">
@@ -63,7 +54,7 @@
                            oninput="adresseValidation()">
                 </div>
             </div>
-            <div class="form-inline form-group row">
+            <div class="form-inline form-group row" id="postForm">
                 <label class="col-2 col-form-label justify-content-start">Post</label>
                 <div class="form-group col-5" id="pstedForm">
                     <input class="form-control col-12" name="poststed" type="text" placeholder="OSLO" id="poststed"
@@ -74,7 +65,7 @@
                            oninput="postnrValidation()">
                 </div>
             </div>
-            <div class="form-inline row">
+            <div class="form-inline form-group row" id="selectForm">
                 <label class="col-2 col-form-label justify-content-start" for="eventSelect">Velg Øvelse(r)</label>
                 <div class="form-group col-10">
                     <select multiple class="form-control col-12" id="eventSelect"></select>
