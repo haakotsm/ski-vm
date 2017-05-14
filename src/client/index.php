@@ -38,32 +38,32 @@
             <ul class="navbar-nav ml-auto mr-5 text-white">
                 <li class="nav-item mx-2">
                     <a class="nav-link" id="events" href="app/html/events.php"><i class="fa fa-trophy"></i>Se øvelser
-                        <span
-                                class="sr-only">(current)</span></a>
+                        <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link btn-draw" href="app/html/athletes.php"> <i class="fa fa-id-card-o"></i> Se
                         utøvere </a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="app/html/registration.php"> <i class="fa fa-ticket"></i> Meld på øvelse
+                    <a class="nav-link" href="app/html/registration.php"> <i class="fa fa-ticket"></i> Kjøp billetter
                     </a>
                 </li>
 
-<?php
-session_start();
+				<?php
+					session_start();
 
-if(isset($_GET['brukernavn'])){
+					if ( isset( $_GET[ 'brukernavn' ] ) ) {
 
-    echo '<li class="nav-item mx-2">';
-                    echo '<a id ="display" class="nav-link" href="app/html/registrationEvent.php"><i class="fa fa-plus"></i> Øvelse </a></li>';
-                echo '<li class="nav-item mx-2">';
-                    echo '<a id="display"  class="nav-link" href="app/html/registrationAthlete.php"><i class="fa fa-plus"></i> Utøver </a></li>';
-                echo '<li class="nav-item mx-2">';
-}
+						echo '<li class="nav-item mx-2">';
+						echo '<a id ="display" class="nav-link" href="app/html/registrationEvent.php"><i class="fa fa-plus"></i> Øvelse </a></li>';
+						echo '<li class="nav-item mx-2">';
+						echo '<a id="display"  class="nav-link" href="app/html/registrationAthlete.php"><i class="fa fa-plus"></i> Utøver </a></li>';
+						echo '<li class="nav-item mx-2">';
+					}
 
-?>
-               <li> <a class="nav-link" href="app/html/administration.php"><i class="fa fa-sign-in"></i> Logg Inn (Admin) </a></li>
+				?>
+                <li><a class="nav-link" href="app/html/administration.php"><i class="fa fa-sign-in"></i> Logg Inn
+                        (Admin) </a></li>
 
                 </li>
             </ul>

@@ -32,7 +32,7 @@
                 <label for="record" class="col-2 col-form-label">Rekord</label>
                 <div class="col-10">
                     <input class="form-control" type="text" name="record" placeholder="35:50" id="record" oninput="valRekord()">
-                    <small class="form-text text-muted">Fyll inn tiden for verdensrekord på følgende format ##:##</small>
+                    <small class="form-text text-muted">Rekord Fyll inn fornavn. Fornavn kan inneholde bokstaver, tall, mellomrom og bindestrek (-) </small>
                 </div>
             </div>
             <div class="form-group row" id="recordHolderForm">
@@ -40,7 +40,7 @@
                 <div class="col-10">
                     <input class="form-control" name="recordHolder" type="tel" placeholder="Tor Krattebøl"
                            id="recordHolder"oninput="valRekordHolder()">
-                    <small class="form-text text-muted">Fyll inn verdensrekordholder</small>
+                    <small class="form-text text-muted">Rekordholders navn kan inneholde bokstaver mellomrom og bindestrek (-)</small>
                 </div>
             </div>
             <button type="submit" id="SubmitBtn" class="btn btn-outline-primary mt-5">

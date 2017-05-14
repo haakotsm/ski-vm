@@ -17,7 +17,7 @@
                         '<div class="card-block p-2">' +
                             '<h2 class="justify-content-start">'+ element.navn +'</h2>' +
                             '<b>Verdensrekord: </b><br>' + element.rekordholder + ' | ' + element.verdensrekord + '<br>' +
-                            '<a class="nav-link" href="app/html/spectators.php?event='+ element.id  +'"> Se tilskuere </a>' +
+                            '<a class="nav-link" id="event'+ element.id +'" href="app/html/spectators.php?event='+ element.id  +'"> Se tilskuere </a>' +
                         '</div>' +
                         '<div class="card-block p-2 bg-faded">' +
                             '<h3 class="justify-content-start"> Deltagere: </h3>' +
@@ -27,7 +27,10 @@
                             '</div>' +
                         '</div>'
                 );
-
+                $('#event'+element.id).on('click', function () {
+                   callPage($(this).attr('href'));
+                   return false;
+                });
                 for (var i = 0; i < athleteArray.length; i++) {
                     $('#athletes'+(index)).append(athleteArray[i].fornavn + ' ' + athleteArray[i].etternavn + '<br>');
                 }

@@ -25,7 +25,7 @@
                 <div class="col-10">
                     <input class="form-control" name="firstName" type="text"
                            placeholder="Ola" id="fornavn" oninput="nameValidation()">
-                    <small class="form-text text-muted">Fyll inn navn</small>
+                    <small class="form-text text-muted">Fornavn kan inneholde bokstaver mellomrom og bindestrek (-)</small>
                 </div>
             </div>
             <div class="form-group row" id="etternavnForm">
@@ -33,12 +33,14 @@
                 <div class="col-10">
                     <input class="form-control" type="text" name="lastName" placeholder="Nordmann"
                            id="etternavn" oninput="lastnameValidation()">
+                    <small class="form-text text-muted">Etternavn kan inneholde bokstaver mellomrom og bindestrek (-)</small>
                 </div>
             </div>
             <div class="form-inline form-group row" id="selectForm">
                 <label class="col-2 col-form-label justify-content-start" for="eventSelect">Velg Øvelse(r)</label>
                 <div class="form-group col-10">
                     <select multiple class="form-control col-12" id="eventSelect"></select>
+                    <small class="form-text text-muted">Velg en eller flere øvelsere</small>
                 </div>
             </div>
             <button type="submit" id="SubmitBtn" class="btn btn-outline-primary mt-5">
