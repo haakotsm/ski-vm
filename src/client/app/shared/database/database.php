@@ -1,5 +1,4 @@
 <?php
-
 	require __DIR__ . '\..\interfaces\IDatabase.php';
 
 	class Database implements IDatabase {

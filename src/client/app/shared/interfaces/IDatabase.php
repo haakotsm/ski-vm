@@ -5,6 +5,4 @@
 		function quote($value);
 		function select($query);
 		function insertId();
-
-
 	}

@@ -52,20 +52,18 @@
 				<?php
 					session_start();
 
-					if ( isset( $_GET[ 'brukernavn' ] ) ) {
+					if ( isset( $_SESSION[ 'brukernavn' ] ) ) {
 
 						echo '<li class="nav-item mx-2">';
 						echo '<a id ="display" class="nav-link" href="app/html/registrationEvent.php"><i class="fa fa-plus"></i> Øvelse </a></li>';
 						echo '<li class="nav-item mx-2">';
 						echo '<a id="display"  class="nav-link" href="app/html/registrationAthlete.php"><i class="fa fa-plus"></i> Utøver </a></li>';
 						echo '<li class="nav-item mx-2">';
+						echo ' <li> <a class="nav-link" href="app/html/administration.php"><i class="fa fa-sign-in"></i> Logg ut ' . $_SESSION[ 'brukernavn' ] . '</a></li>';
+					} else {
+						echo ' <li> <a class="nav-link" href="app/html/administration.php"><i class="fa fa-sign-in"></i> Logg Inn (Admin) </a></li>';
 					}
-
 				?>
-                <li><a class="nav-link" href="app/html/administration.php"><i class="fa fa-sign-in"></i> Logg Inn
-                        (Admin) </a></li>
-
-                </li>
             </ul>
         </div>
     </div>
