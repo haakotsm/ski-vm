@@ -18,7 +18,7 @@ try {
 			'<th scope="row">' . $id . '</th>' .
 			'<td>' . $result[ $i ]->fornavn . '</td>' .
 			'<td>' . $result[ $i ]->etternavn . '</td>';
-		if ( isset( $_SESSION[ 'brukernavn' ] ) ) {
+		if ( isset( $_SESSION[ 'innLogget' ] ) ) {
 		$returnString .= "<td><button class='btn btn-outline-danger' oninput='delete($id)'>Slett</button>";
 		$returnString .= "<td><button class='btn btn-outline-info' oninput='edit($id)'>Endre</button>";
 		}

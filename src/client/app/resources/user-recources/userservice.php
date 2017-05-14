@@ -54,10 +54,6 @@
 						$usr = $rad[ 'brukernavn' ];
 						$pw = $rad[ 'passord' ];
 
-						$userOK = "yo";
-						$passOK = "yo";
-						echo "!!!! " . $passOK . " WHY WONT YOU PRINT OUT " . $userOK . " !!!!";
-
 						if ( password_verify( $uname, $usr ) && password_verify( $pass, $pw ) ) {
 							return true;
 						}
